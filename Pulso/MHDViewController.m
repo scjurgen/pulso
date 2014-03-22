@@ -15,8 +15,8 @@
 
 #define CLAMPPANX 5.0
 #define CLAMPPANY 3.0
-#define CLAMPROTX 5.0
-#define CLAMPROTY 1.0
+#define CLAMPROTX 0.5
+#define CLAMPROTY 0.5
 
 char *testImages[] = {
     "1x1.jpg", "1x2.jpg", "1x3.jpg", "1x4.jpg", "1x5.jpg", "2x1.jpg", "2x2.jpg", "2x3.jpg",
@@ -160,15 +160,15 @@ char *testImages[] = {
                 case 1:
                     _panX = _lastPanX+(locStart.x-touchLocation.x)/100.0;
                     _panY = _lastPanY+(touchLocation.y-locStart.y)/100.0;
-                    _panX  = [self clampFloat:_panX  minValue:-10.0 maxValue:10.0];
-                    _panY  = [self clampFloat:_panY  minValue:-10.0 maxValue:10.0];
+                    _panX  = [self clampFloat:_panX  minValue:-CLAMPPANX maxValue:CLAMPPANX];
+                    _panY  = [self clampFloat:_panY  minValue:-CLAMPPANY maxValue:CLAMPPANY];
                     NSLog(@"pan: %f,%f",_panX, _panY);
                     break;
                 case 2:
                     _rotationX = _lastRotationX+(locStart.x-touchLocation.x)/100.0;
                     _rotationY = _lastRotationY+(touchLocation.y-locStart.y)/100.0;
-                    _rotationX  = [self clampFloat:_rotationX  minValue:-10.0 maxValue:10.0];
-                    _rotationY  = [self clampFloat:_rotationY  minValue:-10.0 maxValue:10.0];
+                    _rotationX  = [self clampFloat:_rotationX  minValue:-CLAMPROTX maxValue:CLAMPROTX];
+                    _rotationY  = [self clampFloat:_rotationY  minValue:-CLAMPROTY maxValue:CLAMPROTY];
                     NSLog(@"Rotation: %f,%f",_rotationX, _rotationY);
                     break;
             }
@@ -236,7 +236,7 @@ char *testImages[] = {
                 self.contentWebView.frame = originalOpenRect;
                 self.contentWebView.alpha = 0.0;
                 CGRect overShootTargetRect = CGRectInset(targetRect,-20,-20);
-                [UIView animateWithDuration:0.5 animations:^{
+                [UIView animateWithDuration:0.2 animations:^{
                     self.contentWebView.frame = overShootTargetRect;
                     self.contentWebView.alpha = 0.9;
                 } completion:^(BOOL finished) {
