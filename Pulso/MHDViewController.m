@@ -22,12 +22,18 @@ char *testImages[] = {
 
 
 //
-@interface MHDViewController () {
+@interface MHDViewController ()
+{
     float _rotationX,_rotationY;
+    float _panX,_panY;
+
+
     float _lastRotationX, _lastRotationY;
+    float _lastPanX, _lastPanY;
     float _currentZoom;
     float _lastZoom;
     float _maxZoom,_minZoom;
+    int numberOfTouches;
     CGPoint relaseVelocity;
     CGFloat pinchVelocity;
 
@@ -48,8 +54,8 @@ char *testImages[] = {
 {
     self.cardsWorld.worldPov.rotationX = _rotationX;
     self.cardsWorld.worldPov.rotationY = _rotationY;
-    self.cardsWorld.worldPov.panX = _rotationX;
-    self.cardsWorld.worldPov.panY = _rotationY;
+    self.cardsWorld.worldPov.panX = _panX;
+    self.cardsWorld.worldPov.panY = _panY;
     self.cardsWorld.worldPov.zoom = _currentZoom;
 
 }
@@ -60,12 +66,12 @@ char *testImages[] = {
     webNewsEngine = [[WebNewsEngine alloc] init];
     [webNewsEngine defineTemplate:@"NewsScreen"];
 
-//    nr = [[NewsReaderFromGuardian alloc] init];
-//    [nr downloadJSONFromURL:^(NSDictionary *dict) {
-//        NSLog(@"Fully Loaded");
-//    } onFailure:^(NSError *error) {
-//        NSLog(@"Empty... sigh");
-//    }];
+    //    nr = [[NewsReaderFromGuardian alloc] init];
+    //    [nr downloadJSONFromURL:^(NSDictionary *dict) {
+    //        NSLog(@"Fully Loaded");
+    //    } onFailure:^(NSError *error) {
+    //        NSLog(@"Empty... sigh");
+    //    }];
 
     _maxZoom = 10.0;
     _minZoom = 0.1;
@@ -89,34 +95,67 @@ char *testImages[] = {
     [self applyPov];
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
     [self.view addGestureRecognizer:tapRecognizer];
+
     UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanFrom:)];
+    panRecognizer.minimumNumberOfTouches = 1;
+    panRecognizer.maximumNumberOfTouches = 2;
     [self.view addGestureRecognizer:panRecognizer];
+
+    //    UIPanGestureRecognizer *rotateRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleRotationFrom:)];
+    //    panRecognizer.minimumNumberOfTouches = 2;
+    //    panRecognizer.maximumNumberOfTouches = 2;
+    //    [self.view addGestureRecognizer:rotateRecognizer];
+
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchFrom:)];
     [self.view addGestureRecognizer:pinchRecognizer];
     [_contentWebView loadHTMLString:[webNewsEngine createHtml] baseURL:nil];
 }
 
 
+
+
 // Add new method to file (anywhere)
 - (void)handlePanFrom:(UIPanGestureRecognizer *)recognizer {
     static CGPoint locStart;
+
     switch (recognizer.state)
     {
         case UIGestureRecognizerStateBegan:
             locStart = [recognizer locationInView:recognizer.view];
+            numberOfTouches = recognizer.numberOfTouches;
             break;
         case UIGestureRecognizerStateEnded:
-            _lastRotationX = _rotationX;
-            _lastRotationY = _rotationY;
+            switch (numberOfTouches)
+        {
+            case 1:
+                _lastPanX = _panX;
+                _lastPanY = _panY;
+                break;
+            case 2:
+                _lastRotationX = _rotationX;
+                _lastRotationY = _rotationY;
+                break;
+        }
             relaseVelocity = [recognizer velocityInView:recognizer.view];
             [self applyPov];
-
             break;
         case UIGestureRecognizerStateChanged:
         {
             CGPoint touchLocation = [recognizer locationInView:recognizer.view];
-            _rotationX = _lastRotationX+(locStart.x-touchLocation.x)/100.0;
-            _rotationY = _lastRotationY+(touchLocation.y-locStart.y)/100.0;
+            switch (numberOfTouches)
+            {
+                case 1:
+                    _lastPanX = _lastPanX+(locStart.x-touchLocation.x)/100.0;
+                    _lastPanY = _lastPanY+(touchLocation.y-locStart.y)/100.0;
+                    break;
+                case 2:
+
+
+                    _rotationX = _lastRotationX+(locStart.x-touchLocation.x)/100.0;
+                    _rotationY = _lastRotationY+(touchLocation.y-locStart.y)/100.0;
+                    break;
+            }
+
             [self applyPov];
         }
             break;
@@ -125,6 +164,29 @@ char *testImages[] = {
     }
 }
 
+// Add new method to file (anywhere)
+- (void)handleRotationFrom:(UIPanGestureRecognizer *)recognizer {
+    static CGPoint locStart;
+
+    switch (recognizer.state)
+    {
+        case UIGestureRecognizerStateBegan:
+            locStart = [recognizer locationInView:recognizer.view];
+            break;
+        case UIGestureRecognizerStateEnded:
+            relaseVelocity = [recognizer velocityInView:recognizer.view];
+            [self applyPov];
+
+            break;
+        case UIGestureRecognizerStateChanged:
+        {
+            [self applyPov];
+        }
+            break;
+        default:
+            break;
+    }
+}
 - (float)clampFloat:(float)invalue minValue:(float)minValue maxValue:(float)maxValue
 {
     if (invalue < minValue) return minValue;
@@ -133,7 +195,8 @@ char *testImages[] = {
 }
 
 // Add new method to file (anywhere)
-- (void)handlePinchFrom:(UIPinchGestureRecognizer *)recognizer {
+- (void)handlePinchFrom:(UIPinchGestureRecognizer *)recognizer
+{
     switch(recognizer.state)
     {
         case UIGestureRecognizerStateBegan:
@@ -163,33 +226,33 @@ char *testImages[] = {
         case UIGestureRecognizerStateRecognized:
         {
             CGPoint p[4];
-            int ret = [self.cardsWorld tapWorld:self.view.bounds.size
+
+            CGRect targetRect = CGRectMake(0,0,1024.0,768.0);
+            int ret = [self.cardsWorld tapWorld:targetRect.size
                                               x:locStart.x
                                               y:locStart.y
                                               p:p];
             if (ret != -1)
             {
 
-                CGPoint pt1 = CGPointMake((p[0].x/2.0+0.5)*self.view.frame.size.width,
-                                          (p[0].y/2.0+0.5)*self.view.frame.size.height);
-                CGPoint pt2 = CGPointMake((p[3].x/2.0+0.5)*self.view.frame.size.width,
-                                          (p[3].y/2.0+0.5)*self.view.frame.size.height);
+                CGPoint pt1 = CGPointMake((p[0].x/2.0+0.5)*targetRect.size.width,
+                                          (p[0].y/2.0+0.5)*targetRect.size.height);
+                CGPoint pt2 = CGPointMake((p[3].x/2.0+0.5)*targetRect.size.width,
+                                          (p[3].y/2.0+0.5)*targetRect.size.height);
                 originalOpenRect.origin.x = pt1.x;
-                originalOpenRect.origin.y = (self.view.frame.size.height-pt2.y);
+                originalOpenRect.origin.y = (targetRect.size.height-pt2.y);
                 originalOpenRect.size.width = pt2.x-pt1.x;
                 originalOpenRect.size.height = pt2.y-pt1.y;
-                //                    NSLog(@"[%f %f]->[%f %f] [%@]", locStart.x, locStart.y,
-                //                          originalOpenRect.origin.x, originalOpenRect.origin.y,
-                //                          NSStringFromCGRect(self.view.bounds));
+
                 self.contentWebView.frame = originalOpenRect;
                 self.contentWebView.alpha = 0.0;
-                CGRect targetRect = CGRectInset(self.view.frame,-20,-20);
+                CGRect overShootTargetRect = CGRectInset(targetRect,-20,-20);
                 [UIView animateWithDuration:0.5 animations:^{
-                    self.contentWebView.frame = targetRect;
+                    self.contentWebView.frame = overShootTargetRect;
                     self.contentWebView.alpha = 0.9;
                 } completion:^(BOOL finished) {
                     [UIView animateWithDuration:0.2 animations:^{
-                        self.contentWebView.frame = CGRectInset(self.view.frame, 5,5);
+                        self.contentWebView.frame = CGRectInset(overShootTargetRect, 5,5);
                         self.contentWebView.alpha = 0.9;
 
                     }];
@@ -235,7 +298,7 @@ char *testImages[] = {
 - (void)setupGL
 {
     [EAGLContext setCurrentContext:self.context];
-    [self.cardsWorld setup:10 segmentsY:5];
+    [self.cardsWorld setup:12 segmentsY:7];
 }
 
 - (void)update
@@ -247,10 +310,11 @@ char *testImages[] = {
     i++;
     if (i==15)
     {
-
-        NSString *name = [NSString stringWithFormat:@"TestImages/%s",testImages[rand()%(sizeof(testImages)/sizeof(char*))]];
-        UIImage *image =  [UIImage imageNamed:name];
-        [self.cardsWorld.textureAtlas updateTexture:rand()%12 row:rand()%7  image:image ];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString *name = [NSString stringWithFormat:@"TestImages/%s",testImages[rand()%(sizeof(testImages)/sizeof(char*))]];
+            UIImage *image =  [UIImage imageNamed:name];
+            [self.cardsWorld.textureAtlas updateTexture:rand()%12 row:rand()%7  image:image ];
+        });
         i = 0;
     }
 }
@@ -274,10 +338,22 @@ char *testImages[] = {
 {
     if (relaseVelocity.x!=0.0)
     {
-        _lastRotationX -= relaseVelocity.x/2000.0;
-        _lastRotationY += relaseVelocity.y/2000.0;
-        _rotationX = _lastRotationX;
-        _rotationY = _lastRotationY;
+        switch (numberOfTouches)
+        {
+
+            case 1:
+                _lastPanX -= relaseVelocity.x/2000.0;
+                _lastPanY += relaseVelocity.y/2000.0;
+                _panX = _lastPanX;
+                _panY = _lastPanY;
+                break;
+            case 2:
+                _lastRotationX -= relaseVelocity.x/2000.0;
+                _lastRotationY += relaseVelocity.y/2000.0;
+                _rotationX = _lastRotationX;
+                _rotationY = _lastRotationY;
+                break;
+        }
         relaseVelocity.x/=1.2;
         relaseVelocity.y/=1.2;
         if ((fabs(relaseVelocity.x)<2.0) && (fabs(relaseVelocity.y)<2.0))
@@ -290,7 +366,6 @@ char *testImages[] = {
 
     }
 }
-
 
 - (IBAction)modelAction:(id)sender {
     currentModel++;

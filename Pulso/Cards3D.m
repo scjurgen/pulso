@@ -306,7 +306,13 @@
             CGFloat xp = (x-(int)columns/2)*(paddingX+width);
             CGFloat yp = (y-(int)rows/2)*(paddingY+height);
             NSUInteger index = [self getIndex:x y:y];
-            [self setCenterRectangle:gRectVertexData cardNr:index w:width h:height];
+            CGFloat h = height;
+            if (rand()%2==0)
+            {
+                h/=2;
+            }
+
+            [self setCenterRectangle:gRectVertexData cardNr:index w:width h:h];
             [self translateRect:gRectVertexData cardNr:index x:xp y:yp z:(rand()%100)/30.0];
         }
     }

@@ -128,29 +128,19 @@
 
     float aspect = fabsf(size.width / size.height);
 
-    self.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.2f, 10.0E10f);
+    self.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.2f, 1.0E5f);
 
     self.effect.transform.projectionMatrix = self.projectionMatrix;
 
     GLKMatrix4 baseModelViewMatrix;
-    //    if (currentModel == 0)
-    //    {
-//    baseModelViewMatrix = GLKMatrix4MakeTranslation(- self.worldPov.rotationX, - self.worldPov.rotationY,  - self.worldPov.zoom);
-//    self.modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, -1.5f);
-//    self.modelViewMatrix = GLKMatrix4Multiply(baseModelViewMatrix, self.modelViewMatrix);
-    //    }
 
-
-
-    //    else
-    //    {
-                baseModelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, - self.worldPov.zoom);
-                baseModelViewMatrix = GLKMatrix4Rotate(baseModelViewMatrix, self.worldPov.rotationX, 0.0f, 1.0f, 0.0f);
-    //
-                self.modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, -1.5f);
-                self.modelViewMatrix = GLKMatrix4Rotate(self.modelViewMatrix, - self.worldPov.rotationY, 1.0f, 0.0f, 0.0f);
-                self.modelViewMatrix = GLKMatrix4Multiply(baseModelViewMatrix, self.modelViewMatrix);
-    //    }
+    baseModelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, - self.worldPov.zoom);
+    baseModelViewMatrix = GLKMatrix4MakeTranslation(- self.worldPov.panX, - self.worldPov.panY,  - self.worldPov.zoom);
+    baseModelViewMatrix = GLKMatrix4Rotate(baseModelViewMatrix, self.worldPov.rotationX, 0.0f, 1.0f, 0.0f);
+    self.modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, -1.5f);
+    self.modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, -1.5f);
+    self.modelViewMatrix = GLKMatrix4Rotate(self.modelViewMatrix, - self.worldPov.rotationY, 1.0f, 0.0f, 0.0f);
+    self.modelViewMatrix = GLKMatrix4Multiply(baseModelViewMatrix, self.modelViewMatrix);
 
 }
 
@@ -257,23 +247,26 @@
 - (void)drawView
 {
     [self clearWorld];
+    [OpenGlError checkQueue];
 
 #ifdef DEBUGEYEPOINTER
     [showPointingVector update:self.projectionMatrix modelViewMatrix:self.modelViewMatrix];
 #endif
 
     [skyBox draw];
+    [OpenGlError checkQueue];
 
-    
+
 
     [self.effect prepareToDraw];
 
     glBindVertexArrayOES(_vertexArray[0]);
     [_cards updateTimeComponent];
+    [OpenGlError checkQueue];
 
     glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer[0]);
     glBufferData(GL_ARRAY_BUFFER, (GLsizeiptr)[_cards vertexDataSize], _cards.gRectVertexData, GL_DYNAMIC_DRAW);
-    
+
     glDrawArrays(GL_TRIANGLES, 0, segmentsInX*segmentsInY*6);
     glBindVertexArrayOES(0);
     [OpenGlError checkQueue];

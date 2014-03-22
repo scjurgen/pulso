@@ -133,6 +133,7 @@ GLfloat gCubeVertexData[6*5] =
 {
     [self scaleCube];
     texturemap = [GLKTextureInfo setTextureImage:[UIImage imageNamed:@"ESO_-_Milky_Way.jpg"]];
+    //texturemap = [GLKTextureInfo setTextureImage:[UIImage imageNamed:@"glitch.jpg"]];
     self.backGroundEffect = [[GLKBaseEffect alloc] init];
 
     self.backGroundEffect.light0.enabled = GL_FALSE;

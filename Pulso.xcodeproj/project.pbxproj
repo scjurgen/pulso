@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		286704EF18DDFB17000619EC /* glitch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 286704EE18DDFB17000619EC /* glitch.jpg */; };
 		28C8593418DDCFA500C5374B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C8593318DDCFA500C5374B /* Foundation.framework */; };
 		28C8593618DDCFA500C5374B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C8593518DDCFA500C5374B /* CoreGraphics.framework */; };
 		28C8593818DDCFA500C5374B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C8593718DDCFA500C5374B /* UIKit.framework */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		286704EE18DDFB17000619EC /* glitch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = glitch.jpg; sourceTree = "<group>"; };
 		28C8593018DDCFA500C5374B /* Pulso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pulso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C8593318DDCFA500C5374B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		28C8593518DDCFA500C5374B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -217,6 +219,7 @@
 		28C8597018DDD3D800C5374B /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				286704EE18DDFB17000619EC /* glitch.jpg */,
 				28C8597418DDD3FB00C5374B /* black.png */,
 				28C8597218DDD3EF00C5374B /* ESO_-_Milky_Way.jpg */,
 			);
@@ -359,6 +362,7 @@
 				28C859A218DDD50A00C5374B /* TestImages in Resources */,
 				28C8595418DDCFA500C5374B /* Images.xcassets in Resources */,
 				28C8594218DDCFA500C5374B /* InfoPlist.strings in Resources */,
+				286704EF18DDFB17000619EC /* glitch.jpg in Resources */,
 				28C8597318DDD3EF00C5374B /* ESO_-_Milky_Way.jpg in Resources */,
 				28C8594B18DDCFA500C5374B /* Main.storyboard in Resources */,
 				28C8597518DDD3FB00C5374B /* black.png in Resources */,
@@ -526,6 +530,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pulso/Pulso-Prefix.pch";
 				INFOPLIST_FILE = "Pulso/Pulso-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -539,6 +544,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pulso/Pulso-Prefix.pch";
 				INFOPLIST_FILE = "Pulso/Pulso-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -603,6 +609,7 @@
 				28C8596C18DDCFA500C5374B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		28C8596D18DDCFA500C5374B /* Build configuration list for PBXNativeTarget "PulsoTests" */ = {
 			isa = XCConfigurationList;
@@ -611,6 +618,7 @@
 				28C8596F18DDCFA500C5374B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

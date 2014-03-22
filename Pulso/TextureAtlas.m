@@ -122,7 +122,7 @@
     UIGraphicsBeginImageContextWithOptions(size, NO, 1.0);
 
     CGRect rc = CGRectMake(0, 0, size.width, size.height);
-    UIColor *col = [UIColor colorWithHue:0 saturation:1.0 brightness:1.0 alpha:0.9];
+    UIColor *col = [UIColor colorWithHue:0 saturation:0.0 brightness:1.0 alpha:0.9];
     [col setFill];
     UIRectFill(rc);
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
@@ -139,6 +139,28 @@
     CGSize size = {TEXTUREMAPSIZE,TEXTUREMAPSIZE};
     GLint x,y;
     GLsizei w,h;
+
+    if (column >=self.segments.x)
+    {
+        NSLog(@"Column exceeded");
+        return;
+    }
+    if (column <0)
+    {
+        NSLog(@"Column negative!!!");
+        return;
+    }
+    if (row >=self.segments.y)
+    {
+        NSLog(@"Row nr exceeded");
+        return;
+    }
+
+    if (row < 0)
+    {
+        NSLog(@"Row negative");
+        return;
+    }
     x = (GLint)(column*TEXTUREMAPSIZE/self.segments.x);
     y = (GLint)(row*TEXTUREMAPSIZE/self.segments.y);
     w = size.width/self.segments.x;
