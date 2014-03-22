@@ -13,6 +13,11 @@
 #import "MHDCardsWorld.h"
 #import "WebNewsEngine.h"
 
+#define CLAMPPANX 5.0
+#define CLAMPPANY 3.0
+#define CLAMPROTX 0.5
+#define CLAMPROTY 0.5
+
 char *testImages[] = {
     "1x1.jpg", "1x2.jpg", "1x3.jpg", "1x4.jpg", "1x5.jpg", "2x1.jpg", "2x2.jpg", "2x3.jpg",
     "2x4.jpg", "2x5.jpg", "2x6.jpg", "2x7.jpg", "2x8.jpg", "2x9.jpg", "3x1.jpg", "3x2.jpg",
@@ -33,7 +38,7 @@ char *testImages[] = {
     float _currentZoom;
     float _lastZoom;
     float _maxZoom,_minZoom;
-    int numberOfTouches;
+    NSUInteger numberOfTouches;
     CGPoint relaseVelocity;
     CGFloat pinchVelocity;
 
@@ -52,8 +57,8 @@ char *testImages[] = {
 
 - (void)applyPov
 {
-    self.cardsWorld.worldPov.rotationX = _rotationX;
-    self.cardsWorld.worldPov.rotationY = _rotationY;
+    self.cardsWorld.worldPov.rotationX = - _rotationX;
+    self.cardsWorld.worldPov.rotationY = - _rotationY;
     self.cardsWorld.worldPov.panX = _panX;
     self.cardsWorld.worldPov.panY = _panY;
     self.cardsWorld.worldPov.zoom = _currentZoom;
@@ -74,7 +79,7 @@ char *testImages[] = {
     //    }];
 
     _maxZoom = 10.0;
-    _minZoom = 0.1;
+    _minZoom = 0.5;
     _currentZoom = _lastZoom = 10.0;
     currentModel = 1;
 
@@ -101,49 +106,25 @@ char *testImages[] = {
     panRecognizer.maximumNumberOfTouches = 2;
     [self.view addGestureRecognizer:panRecognizer];
 
-    //    UIPanGestureRecognizer *rotateRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleRotationFrom:)];
-    //    panRecognizer.minimumNumberOfTouches = 2;
-    //    panRecognizer.maximumNumberOfTouches = 2;
-    //    [self.view addGestureRecognizer:rotateRecognizer];
-
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchFrom:)];
     [self.view addGestureRecognizer:pinchRecognizer];
     
     
     // Insert BLock method!
-    [webNewsEngine createHtmlUsingBlock:^(MHDArticle *article, NSString *htmltemplate) {
-        [_contentWebView loadHTMLString:[self getHtmlFromArticle:article forTemplate:htmltemplate] baseURL:nil];
+    [webNewsEngine createHtmlUsingBlock:^(NSString *htmlContent) {
+        [_contentWebView loadHTMLString:htmlContent baseURL:nil];
     }];
     
     
 }
 
-- (NSString *)getHtmlFromArticle:(MHDArticle *)article forTemplate:(NSString *)template {
-    
-    NSArray *mediaArr;
-    NSDictionary *medias;
-    NSArray *pictureArr;
-    NSDictionary *pictures;
-    NSArray *captionsArr;
-    
-    if (article[@"medias"]) mediaArr = article[@"medias"];
-    if (mediaArr[0]) medias = mediaArr[0];
-    if (medias[@"references"]) pictureArr = medias[@"references"];
-    if (pictureArr[0]) pictures = pictureArr[0];
-    if (pictures[@"url"]) {
-        
-        NSRange startRange = [pictures[@"url"] rangeOfString:@"w="];
-        NSRange range = NSMakeRange(startRange.location, 5);
-        NSString *substring = [pictures[@"url"] stringByReplacingCharactersInRange:range withString:@"w=1004"];
-        template = [template stringByReplacingOccurrencesOfString:@"{pictureUrl}" withString:substring];
-    }
-    if (medias[@"caption"]) [template stringByReplacingOccurrencesOfString:@"{pictureTitle}" withString:medias[@"caption"]];
-    if (article[@"captions"]) captionsArr = article[@"captions"];
-    if (captionsArr[0]) template = [template stringByReplacingOccurrencesOfString:@"{headerTitle}" withString:captionsArr[0]];
-    if (article[@"content"]) template = [template stringByReplacingOccurrencesOfString:@"{article}" withString:article[@"content"]];
-    
-    return template;
+- (float)clampFloat:(float)invalue minValue:(float)minValue maxValue:(float)maxValue
+{
+    if (invalue < minValue) return minValue;
+    if (invalue > maxValue) return maxValue;
+    return invalue;
 }
+
 
 
 // Add new method to file (anywhere)
@@ -177,14 +158,18 @@ char *testImages[] = {
             switch (numberOfTouches)
             {
                 case 1:
-                    _lastPanX = _lastPanX+(locStart.x-touchLocation.x)/100.0;
-                    _lastPanY = _lastPanY+(touchLocation.y-locStart.y)/100.0;
+                    _panX = _lastPanX+(locStart.x-touchLocation.x)/100.0;
+                    _panY = _lastPanY+(touchLocation.y-locStart.y)/100.0;
+                    _panX  = [self clampFloat:_panX  minValue:-CLAMPPANX maxValue:CLAMPPANX];
+                    _panY  = [self clampFloat:_panY  minValue:-CLAMPPANY maxValue:CLAMPPANY];
+                    NSLog(@"pan: %f,%f",_panX, _panY);
                     break;
                 case 2:
-
-
                     _rotationX = _lastRotationX+(locStart.x-touchLocation.x)/100.0;
                     _rotationY = _lastRotationY+(touchLocation.y-locStart.y)/100.0;
+                    _rotationX  = [self clampFloat:_rotationX  minValue:-CLAMPROTX maxValue:CLAMPROTX];
+                    _rotationY  = [self clampFloat:_rotationY  minValue:-CLAMPROTY maxValue:CLAMPROTY];
+                    NSLog(@"Rotation: %f,%f",_rotationX, _rotationY);
                     break;
             }
 
@@ -196,35 +181,6 @@ char *testImages[] = {
     }
 }
 
-// Add new method to file (anywhere)
-- (void)handleRotationFrom:(UIPanGestureRecognizer *)recognizer {
-    static CGPoint locStart;
-
-    switch (recognizer.state)
-    {
-        case UIGestureRecognizerStateBegan:
-            locStart = [recognizer locationInView:recognizer.view];
-            break;
-        case UIGestureRecognizerStateEnded:
-            relaseVelocity = [recognizer velocityInView:recognizer.view];
-            [self applyPov];
-
-            break;
-        case UIGestureRecognizerStateChanged:
-        {
-            [self applyPov];
-        }
-            break;
-        default:
-            break;
-    }
-}
-- (float)clampFloat:(float)invalue minValue:(float)minValue maxValue:(float)maxValue
-{
-    if (invalue < minValue) return minValue;
-    if (invalue > maxValue) return maxValue;
-    return invalue;
-}
 
 // Add new method to file (anywhere)
 - (void)handlePinchFrom:(UIPinchGestureRecognizer *)recognizer
@@ -259,8 +215,9 @@ char *testImages[] = {
         {
             CGPoint p[4];
 
-            CGRect targetRect = CGRectMake(0,0,1024.0,768.0);
-            int ret = [self.cardsWorld tapWorld:targetRect.size
+            CGRect targetRect = CGRectMake(0,0,1024.0,768.0-100.0);
+            targetRect = CGRectInset(targetRect,20,20);
+            int ret = [self.cardsWorld tapWorld:self.view.bounds.size
                                               x:locStart.x
                                               y:locStart.y
                                               p:p];
@@ -279,7 +236,7 @@ char *testImages[] = {
                 self.contentWebView.frame = originalOpenRect;
                 self.contentWebView.alpha = 0.0;
                 CGRect overShootTargetRect = CGRectInset(targetRect,-20,-20);
-                [UIView animateWithDuration:0.5 animations:^{
+                [UIView animateWithDuration:0.2 animations:^{
                     self.contentWebView.frame = overShootTargetRect;
                     self.contentWebView.alpha = 0.9;
                 } completion:^(BOOL finished) {
@@ -378,12 +335,17 @@ char *testImages[] = {
                 _lastPanY += relaseVelocity.y/2000.0;
                 _panX = _lastPanX;
                 _panY = _lastPanY;
+                _panX  = [self clampFloat:_panX  minValue:-CLAMPPANX maxValue:CLAMPPANX];
+                _panY  = [self clampFloat:_panY  minValue:-CLAMPPANY maxValue:CLAMPPANY];
+
                 break;
             case 2:
                 _lastRotationX -= relaseVelocity.x/2000.0;
                 _lastRotationY += relaseVelocity.y/2000.0;
                 _rotationX = _lastRotationX;
                 _rotationY = _lastRotationY;
+                _rotationX  = [self clampFloat:_rotationX  minValue:-CLAMPROTX maxValue:CLAMPROTX];
+                _rotationY  = [self clampFloat:_rotationY  minValue:-CLAMPROTY maxValue:CLAMPROTY];
                 break;
         }
         relaseVelocity.x/=1.2;
@@ -420,6 +382,11 @@ char *testImages[] = {
         self.contentWebView.alpha = 0.0;
     } completion:^(BOOL finished) {
     }];
+}
+
+- (IBAction)moodAction:(id)sender {
+    UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"Moody!" message:@"Mood button " delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [view show];
 }
 
 @end
