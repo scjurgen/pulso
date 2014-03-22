@@ -40,6 +40,11 @@
 		28C859A218DDD50A00C5374B /* TestImages in Resources */ = {isa = PBXBuildFile; fileRef = 28C859A118DDD50A00C5374B /* TestImages */; };
 		28C859A518DDD53D00C5374B /* WorldPov.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C859A418DDD53D00C5374B /* WorldPov.m */; };
 		28C859A818DDD55200C5374B /* OpenGlError.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C859A718DDD55200C5374B /* OpenGlError.m */; };
+		E787B20518DDFF9400CC38CB /* MHDArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = E787B1FC18DDFF9400CC38CB /* MHDArticle.m */; };
+		E787B20618DDFF9400CC38CB /* MHDArticleList.m in Sources */ = {isa = PBXBuildFile; fileRef = E787B1FE18DDFF9400CC38CB /* MHDArticleList.m */; };
+		E787B20718DDFF9400CC38CB /* MHDDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = E787B20018DDFF9400CC38CB /* MHDDataLoader.m */; };
+		E787B20818DDFF9400CC38CB /* MHDDataMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E787B20218DDFF9400CC38CB /* MHDDataMapper.m */; };
+		E787B20918DDFF9400CC38CB /* MHDPublicInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = E787B20418DDFF9400CC38CB /* MHDPublicInterface.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +110,16 @@
 		28C859A418DDD53D00C5374B /* WorldPov.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldPov.m; sourceTree = "<group>"; };
 		28C859A618DDD55200C5374B /* OpenGlError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OpenGlError.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		28C859A718DDD55200C5374B /* OpenGlError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenGlError.m; sourceTree = "<group>"; };
+		E787B1FB18DDFF9400CC38CB /* MHDArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDArticle.h; sourceTree = "<group>"; };
+		E787B1FC18DDFF9400CC38CB /* MHDArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDArticle.m; sourceTree = "<group>"; };
+		E787B1FD18DDFF9400CC38CB /* MHDArticleList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDArticleList.h; sourceTree = "<group>"; };
+		E787B1FE18DDFF9400CC38CB /* MHDArticleList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDArticleList.m; sourceTree = "<group>"; };
+		E787B1FF18DDFF9400CC38CB /* MHDDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDDataLoader.h; sourceTree = "<group>"; };
+		E787B20018DDFF9400CC38CB /* MHDDataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDDataLoader.m; sourceTree = "<group>"; };
+		E787B20118DDFF9400CC38CB /* MHDDataMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDDataMapper.h; sourceTree = "<group>"; };
+		E787B20218DDFF9400CC38CB /* MHDDataMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDDataMapper.m; sourceTree = "<group>"; };
+		E787B20318DDFF9400CC38CB /* MHDPublicInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDPublicInterface.h; sourceTree = "<group>"; };
+		E787B20418DDFF9400CC38CB /* MHDPublicInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDPublicInterface.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +183,7 @@
 		28C8593D18DDCFA500C5374B /* Pulso */ = {
 			isa = PBXGroup;
 			children = (
+				E787B1F918DDFF9400CC38CB /* DataLoader */,
 				28C859A118DDD50A00C5374B /* TestImages */,
 				28C8599D18DDD4E100C5374B /* NewsCards */,
 				28C8599C18DDD4C500C5374B /* Gimmicks */,
@@ -279,6 +295,31 @@
 			name = NewsCards;
 			sourceTree = "<group>";
 		};
+		E787B1F918DDFF9400CC38CB /* DataLoader */ = {
+			isa = PBXGroup;
+			children = (
+				E787B1FA18DDFF9400CC38CB /* DataTypes */,
+				E787B1FF18DDFF9400CC38CB /* MHDDataLoader.h */,
+				E787B20018DDFF9400CC38CB /* MHDDataLoader.m */,
+				E787B20118DDFF9400CC38CB /* MHDDataMapper.h */,
+				E787B20218DDFF9400CC38CB /* MHDDataMapper.m */,
+				E787B20318DDFF9400CC38CB /* MHDPublicInterface.h */,
+				E787B20418DDFF9400CC38CB /* MHDPublicInterface.m */,
+			);
+			path = DataLoader;
+			sourceTree = "<group>";
+		};
+		E787B1FA18DDFF9400CC38CB /* DataTypes */ = {
+			isa = PBXGroup;
+			children = (
+				E787B1FB18DDFF9400CC38CB /* MHDArticle.h */,
+				E787B1FC18DDFF9400CC38CB /* MHDArticle.m */,
+				E787B1FD18DDFF9400CC38CB /* MHDArticleList.h */,
+				E787B1FE18DDFF9400CC38CB /* MHDArticleList.m */,
+			);
+			path = DataTypes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -327,6 +368,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Schwietering, Jürgen";
 				TargetAttributes = {
+					28C8592F18DDCFA500C5374B = {
+						DevelopmentTeam = M29WUE99YQ;
+					};
 					28C8595818DDCFA500C5374B = {
 						TestTargetID = 28C8592F18DDCFA500C5374B;
 					};
@@ -380,10 +424,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E787B20918DDFF9400CC38CB /* MHDPublicInterface.m in Sources */,
+				E787B20718DDFF9400CC38CB /* MHDDataLoader.m in Sources */,
 				28C8598F18DDD49300C5374B /* GLObjectDebug.m in Sources */,
 				28C8598E18DDD49300C5374B /* GLKTextureInfo+setTextureImage.m in Sources */,
 				28C8598218DDD48700C5374B /* CardLifeCycle.m in Sources */,
 				28C8598518DDD48700C5374B /* CardsObject.m in Sources */,
+				E787B20518DDFF9400CC38CB /* MHDArticle.m in Sources */,
+				E787B20618DDFF9400CC38CB /* MHDArticleList.m in Sources */,
 				28C8595218DDCFA500C5374B /* MHDViewController.m in Sources */,
 				28C8594818DDCFA500C5374B /* MHDAppDelegate.m in Sources */,
 				28C8598618DDD48700C5374B /* MHDCardsWorld.m in Sources */,
@@ -394,6 +442,7 @@
 				28C859A818DDD55200C5374B /* OpenGlError.m in Sources */,
 				28C8599918DDD4B900C5374B /* SkyBox.m in Sources */,
 				28C859A018DDD4F000C5374B /* WebNewsEngine.m in Sources */,
+				E787B20818DDFF9400CC38CB /* MHDDataMapper.m in Sources */,
 				28C8594418DDCFA500C5374B /* main.m in Sources */,
 				28C8598D18DDD49300C5374B /* GLDrawLine.m in Sources */,
 				28C8598318DDD48700C5374B /* Cards3D.m in Sources */,
@@ -523,6 +572,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pulso/Pulso-Prefix.pch";
 				INFOPLIST_FILE = "Pulso/Pulso-Info.plist";
@@ -536,6 +586,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pulso/Pulso-Prefix.pch";
 				INFOPLIST_FILE = "Pulso/Pulso-Info.plist";
@@ -603,6 +654,7 @@
 				28C8596C18DDCFA500C5374B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		28C8596D18DDCFA500C5374B /* Build configuration list for PBXNativeTarget "PulsoTests" */ = {
 			isa = XCConfigurationList;
@@ -611,6 +663,7 @@
 				28C8596F18DDCFA500C5374B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
