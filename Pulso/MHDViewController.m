@@ -93,7 +93,14 @@ char *testImages[] = {
     [self.view addGestureRecognizer:panRecognizer];
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchFrom:)];
     [self.view addGestureRecognizer:pinchRecognizer];
-    [_contentWebView loadHTMLString:[webNewsEngine createHtml] baseURL:nil];
+    
+    
+    // Insert BLock method!
+    [webNewsEngine createHtmlUsingBlock:^(NSString *htmlContent) {
+        [_contentWebView loadHTMLString:htmlContent baseURL:nil];
+    }];
+    
+    
 }
 
 

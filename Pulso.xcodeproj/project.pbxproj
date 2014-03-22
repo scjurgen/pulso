@@ -45,6 +45,7 @@
 		E787B20718DDFF9400CC38CB /* MHDDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = E787B20018DDFF9400CC38CB /* MHDDataLoader.m */; };
 		E787B20818DDFF9400CC38CB /* MHDDataMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E787B20218DDFF9400CC38CB /* MHDDataMapper.m */; };
 		E787B20918DDFF9400CC38CB /* MHDPublicInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = E787B20418DDFF9400CC38CB /* MHDPublicInterface.m */; };
+		E787B20B18DE07E000CC38CB /* NewsScreen.html in Resources */ = {isa = PBXBuildFile; fileRef = E787B20A18DE07E000CC38CB /* NewsScreen.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		E787B20218DDFF9400CC38CB /* MHDDataMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDDataMapper.m; sourceTree = "<group>"; };
 		E787B20318DDFF9400CC38CB /* MHDPublicInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDPublicInterface.h; sourceTree = "<group>"; };
 		E787B20418DDFF9400CC38CB /* MHDPublicInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDPublicInterface.m; sourceTree = "<group>"; };
+		E787B20A18DE07E000CC38CB /* NewsScreen.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = NewsScreen.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +235,7 @@
 		28C8597018DDD3D800C5374B /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				E787B20A18DE07E000CC38CB /* NewsScreen.html */,
 				28C8597418DDD3FB00C5374B /* black.png */,
 				28C8597218DDD3EF00C5374B /* ESO_-_Milky_Way.jpg */,
 			);
@@ -402,6 +405,7 @@
 			files = (
 				28C859A218DDD50A00C5374B /* TestImages in Resources */,
 				28C8595418DDCFA500C5374B /* Images.xcassets in Resources */,
+				E787B20B18DE07E000CC38CB /* NewsScreen.html in Resources */,
 				28C8594218DDCFA500C5374B /* InfoPlist.strings in Resources */,
 				28C8597318DDD3EF00C5374B /* ESO_-_Milky_Way.jpg in Resources */,
 				28C8594B18DDCFA500C5374B /* Main.storyboard in Resources */,
