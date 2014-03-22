@@ -111,14 +111,39 @@ char *testImages[] = {
     
     
     // Insert BLock method!
-    [webNewsEngine createHtmlUsingBlock:^(NSString *htmlContent) {
-        [_contentWebView loadHTMLString:htmlContent baseURL:nil];
+    [webNewsEngine createHtmlUsingBlock:^(MHDArticle *article, NSString *htmltemplate) {
+        [_contentWebView loadHTMLString:[self getHtmlFromArticle:article forTemplate:htmltemplate] baseURL:nil];
     }];
     
     
 }
 
-
+- (NSString *)getHtmlFromArticle:(MHDArticle *)article forTemplate:(NSString *)template {
+    
+    NSArray *mediaArr;
+    NSDictionary *medias;
+    NSArray *pictureArr;
+    NSDictionary *pictures;
+    NSArray *captionsArr;
+    
+    if (article[@"medias"]) mediaArr = article[@"medias"];
+    if (mediaArr[0]) medias = mediaArr[0];
+    if (medias[@"references"]) pictureArr = medias[@"references"];
+    if (pictureArr[0]) pictures = pictureArr[0];
+    if (pictures[@"url"]) {
+        
+        NSRange startRange = [pictures[@"url"] rangeOfString:@"w="];
+        NSRange range = NSMakeRange(startRange.location, 5);
+        NSString *substring = [pictures[@"url"] stringByReplacingCharactersInRange:range withString:@"w=1004"];
+        template = [template stringByReplacingOccurrencesOfString:@"{pictureUrl}" withString:substring];
+    }
+    if (medias[@"caption"]) [template stringByReplacingOccurrencesOfString:@"{pictureTitle}" withString:medias[@"caption"]];
+    if (article[@"captions"]) captionsArr = article[@"captions"];
+    if (captionsArr[0]) template = [template stringByReplacingOccurrencesOfString:@"{headerTitle}" withString:captionsArr[0]];
+    if (article[@"content"]) template = [template stringByReplacingOccurrencesOfString:@"{article}" withString:article[@"content"]];
+    
+    return template;
+}
 
 
 // Add new method to file (anywhere)

@@ -82,6 +82,8 @@
                 document.getElementById("writtenby").className = "cprsmall";
             }
         }
+        
+        var $pictureWidth = body.width - 19;
         </script>
     </head>
     <body>
@@ -89,11 +91,12 @@
         <div><small onclick="downSize()" style="font-size:18px">&nbsp;-A&nbsp;</small> |  <b onclick="upSize()" style="font-size:22px">&nbsp;A+&nbsp;</b>
         </div>
         <hr style="height:1px;border-width:0;color:#0d0d0d;background-color:#0d0d0d" />
-        <h1 id="newstitle" class="normal">News info</h1>
-        <div id="writtenby" class="cprnormal">Copyright 2014 BILD.DE</div>
-        <div class="floatright" >
-            <img src="{photo}" width="120px" alt="image event"/><br/>Jürgen Schwietering
+        <div class="bigpicture" width=pictureWidth padding-top:10px padding-left:10px>
+            <img src="{pictureUrl}" max-width:100% alt="image event"/><br/>{pictureTitle}
         </div>
+        
+        <h1 id="newstitle" class="normal">{headerTitle}</h1>
+        
         <div id="newstext" class="normal">
             {article}
         </div>

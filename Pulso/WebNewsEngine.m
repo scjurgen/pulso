@@ -49,14 +49,11 @@
 }
 
 -(void)createHtmlUsingBlock:(MHDHTMLContentBlock)result {
-    if (_htmlTemplate==nil) result(@"N/A");
+    if (_htmlTemplate==nil) result(nil, nil);
     
-    NSString *__htmlComplete = _htmlTemplate;
-    
-    [self loadContentUsingBlock:^(NSString *htmlContent) {
+    [self loadContentUsingBlock:^(MHDArticle *article, NSString *htmltemplate) {
         
-        result([__htmlComplete stringByReplacingOccurrencesOfString:@"{article}"
-                                                         withString:htmlContent]);
+        result(article, _htmlTemplate);
         
     }];
 }
@@ -70,12 +67,12 @@
                                   
                                   NSLog(@"%@", (MHDArticle *)resultSuccess);
                                   
-                                  result(_contentString);
+                                  result(article, _htmlTemplate);
                               }
                               onFailure:^(id resultFailure) {
                                   NSLog(@"%@", (MHDArticle *)resultFailure);
                                   
-                                  result(@"Not able to load Data...");
+                                  result(nil, _htmlTemplate);
                               }];
     
 }

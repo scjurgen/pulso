@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DataLoader/DataTypes/MHDArticle.h"
 
 @interface WebNewsEngine : NSObject
 
-typedef void(^MHDHTMLContentBlock)(NSString *htmlContent);
+typedef void(^MHDHTMLContentBlock)(MHDArticle *article, NSString *htmlstring);
 
 @property (nonatomic, strong) NSString *htmlTemplate;
 
