@@ -86,7 +86,7 @@
     self.effect.fog.mode = GLKFogModeLinear;
     self.effect.fog.color = mainColor;
     self.effect.fog.start = -1.0;
-    self.effect.fog.end =  30.0;
+    self.effect.fog.end =  20.0;
 
     self.effect.texture2d0.envMode = GLKTextureEnvModeReplace;
     self.effect.texture2d0.target = GLKTextureTarget2D;
@@ -134,8 +134,7 @@
 
     GLKMatrix4 baseModelViewMatrix;
 
-    baseModelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, - self.worldPov.zoom);
-    baseModelViewMatrix = GLKMatrix4MakeTranslation(- self.worldPov.panX, - self.worldPov.panY,  - self.worldPov.zoom);
+    baseModelViewMatrix = GLKMatrix4MakeTranslation(- self.worldPov.panX, - self.worldPov.panY,  7.6-self.worldPov.zoom);
     baseModelViewMatrix = GLKMatrix4Rotate(baseModelViewMatrix, self.worldPov.rotationX, 0.0f, 1.0f, 0.0f);
     self.modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, -1.5f);
     self.modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, -1.5f);

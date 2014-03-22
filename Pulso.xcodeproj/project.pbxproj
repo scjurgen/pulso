@@ -63,6 +63,7 @@
 /* Begin PBXFileReference section */
 		286704EE18DDFB17000619EC /* glitch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = glitch.jpg; sourceTree = "<group>"; };
 		28AE8FCC18DE26B70064AA59 /* bottom-bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom-bar.png"; sourceTree = "<group>"; };
+		28AE8FCE18DE32880064AA59 /* geometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = geometry.h; sourceTree = "<group>"; };
 		28C8593018DDCFA500C5374B /* Pulso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pulso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C8593318DDCFA500C5374B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		28C8593518DDCFA500C5374B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -189,6 +190,7 @@
 		28C8593D18DDCFA500C5374B /* Pulso */ = {
 			isa = PBXGroup;
 			children = (
+				28AE8FCE18DE32880064AA59 /* geometry.h */,
 				E787B1F918DDFF9400CC38CB /* DataLoader */,
 				28C859A118DDD50A00C5374B /* TestImages */,
 				28C8599D18DDD4E100C5374B /* NewsCards */,

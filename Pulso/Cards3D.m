@@ -63,6 +63,11 @@
     return x + y * _maxColumns;
 }
 
+- (NSUInteger)getIndex:(NSUInteger)x y:(NSUInteger)y z:(NSUInteger)z
+{
+    return x + y * PULSO_COLUMNS+z*PULSO_COLUMNS*PULSO_ROWS;
+}
+
 - (void)assignTextureCoordinates
 {
 #if ATLAS
@@ -110,7 +115,10 @@
     [self resetCardLife];
 
     [self assignTextureCoordinates];
-    [self orderAsTable:self.gRectVertexData columns:columns rows:rows];
+    [self orderAsTable:self.gRectVertexData
+               columns:PULSO_COLUMNS
+                  rows:PULSO_ROWS
+                 depth:PULSO_DEPTH];
 }
 
 
@@ -157,6 +165,7 @@
 
 - (void)updateTimeComponent
 {
+    return;
     [self updateCardLife];
     for (int index=0; index < self.maxCards; index++)
     {
@@ -296,24 +305,25 @@
 - (void)orderAsTable:(VERTEXPOINT_WITH_POS_TEX *)gRectVertexData
              columns:(NSUInteger)columns
                 rows:(NSUInteger)rows
+               depth:(NSUInteger)depth
 {
     CGFloat width = CARDWIDTH, height = CARDHEIGHT;
     CGFloat paddingX = width/5.0, paddingY = height/5.0;
-    for (NSInteger y=0; y < rows; y++)
+    for (NSInteger z=0; z < depth; z++)
     {
-        for (NSInteger x=0; x < columns; x++)
+        for (NSInteger y=0; y < rows; y++)
         {
-            CGFloat xp = (x-(int)columns/2)*(paddingX+width);
-            CGFloat yp = (y-(int)rows/2)*(paddingY+height);
-            NSUInteger index = [self getIndex:x y:y];
-            CGFloat h = height;
-            if (rand()%2==0)
+            for (NSInteger x=0; x < columns; x++)
             {
-                h/=2;
-            }
+                CGFloat brick = width * (int)(x%2)/2;
+                CGFloat xp = (x-(int)columns/2)*(paddingX+width);
+                CGFloat yp = (y-(int)rows/2)*(paddingY+height) + brick;
+                NSUInteger index = [self getIndex:x y:y z:z];
+                CGFloat h = height;
 
-            [self setCenterRectangle:gRectVertexData cardNr:index w:width h:h];
-            [self translateRect:gRectVertexData cardNr:index x:xp y:yp z:(rand()%100)/30.0];
+                [self setCenterRectangle:gRectVertexData cardNr:index w:width h:h];
+                [self translateRect:gRectVertexData cardNr:index x:xp y:yp z:-z*2.0];
+            }
         }
     }
 }
@@ -369,12 +379,12 @@
 
 - (void)orderAsTable
 {
-    [self orderAsTable:self.gRectVertexData columns:12 rows:7];
+    [self orderAsTable:self.gRectVertexData columns:PULSO_COLUMNS rows:PULSO_ROWS depth:PULSO_DEPTH];
 }
 
 - (void)orderAsCube:(NSUInteger)columns rows:(NSUInteger)rows floors:(NSUInteger)floors
 {
-    [self orderAsTable:self.gRectVertexData columns:columns rows:rows];
+   // [self orderAsTable:self.gRectVertexData columns:columns rows:rows];
 }
 
 - (void)orderAsSpiral:(CGFloat)segments

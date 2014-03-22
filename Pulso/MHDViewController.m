@@ -57,8 +57,8 @@ char *testImages[] = {
 
 - (void)applyPov
 {
-    self.cardsWorld.worldPov.rotationX = _rotationX;
-    self.cardsWorld.worldPov.rotationY = _rotationY;
+    self.cardsWorld.worldPov.rotationX = - _rotationX;
+    self.cardsWorld.worldPov.rotationY = - _rotationY;
     self.cardsWorld.worldPov.panX = _panX;
     self.cardsWorld.worldPov.panY = _panY;
     self.cardsWorld.worldPov.zoom = _currentZoom;
@@ -79,7 +79,7 @@ char *testImages[] = {
     //    }];
 
     _maxZoom = 10.0;
-    _minZoom = 0.1;
+    _minZoom = 0.5;
     _currentZoom = _lastZoom = 10.0;
     currentModel = 1;
 
