@@ -16,6 +16,7 @@
 
 - (IBAction)modelAction:(id)sender;
 - (IBAction)closeWebView:(id)sender;
+- (IBAction)moodAction:(id)sender;
 
 
 @end
