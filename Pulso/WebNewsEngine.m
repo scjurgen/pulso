@@ -7,8 +7,14 @@
 //
 
 #import "WebNewsEngine.h"
+#import "DataLoader/MHDPublicInterface.h"
+#import "DataLoader/DataTypes/MHDArticle.h"
 
+@interface WebNewsEngine ()
 
+@property(nonatomic, retain)NSString *contentString;
+
+@end
 @implementation WebNewsEngine
 
 - (id)init
@@ -17,6 +23,7 @@
     if (self)
     {
         _htmlTemplate = nil;
+
     }
     return self;
 }
@@ -41,15 +48,37 @@
     return [NSString stringWithFormat:@"file:/%@", resourcePath];
 }
 
-- (NSString *)createHtml
-{
-    if (_htmlTemplate==nil)
-        return @"N/A";
-    NSString * htmlComplete = _htmlTemplate;
-
-    htmlComplete = [htmlComplete stringByReplacingOccurrencesOfString:@"{photo}"
-                                                           withString:[self mapResourcePath:@"jurgenschwietering" ofType:@"jpg"]];
-    return htmlComplete;
+-(void)createHtmlUsingBlock:(MHDHTMLContentBlock)result {
+    if (_htmlTemplate==nil) result(@"N/A");
+    
+    NSString *__htmlComplete = _htmlTemplate;
+    
+    [self loadContentUsingBlock:^(NSString *htmlContent) {
+        
+        result([__htmlComplete stringByReplacingOccurrencesOfString:@"{article}"
+                                                         withString:htmlContent]);
+        
+    }];
 }
+
+- (void)loadContentUsingBlock:(MHDHTMLContentBlock)result {
+    
+    [MHDPublicInterface getArticleForId:@"da17228caa78f321e802f3641d69bed8"
+                              onSuccess:^(id resultSuccess) {
+                                  MHDArticle *article = (MHDArticle *)resultSuccess;
+                                  _contentString = article[@"content"];
+                                  
+                                  NSLog(@"%@", (MHDArticle *)resultSuccess);
+                                  
+                                  result(_contentString);
+                              }
+                              onFailure:^(id resultFailure) {
+                                  NSLog(@"%@", (MHDArticle *)resultFailure);
+                                  
+                                  result(@"Not able to load Data...");
+                              }];
+    
+}
+
 
 @end

@@ -10,10 +10,12 @@
 
 @interface WebNewsEngine : NSObject
 
+typedef void(^MHDHTMLContentBlock)(NSString *htmlContent);
+
 @property (nonatomic, strong) NSString *htmlTemplate;
 
 -(void)defineTemplate:(NSString*)templateName;
 
--(NSString*)createHtml;
+-(void)createHtmlUsingBlock:(MHDHTMLContentBlock)result;
 
 @end
