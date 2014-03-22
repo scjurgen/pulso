@@ -237,11 +237,8 @@
 		28C8597018DDD3D800C5374B /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				286704EE18DDFB17000619EC /* glitch.jpg */,
-=======
 				E787B20A18DE07E000CC38CB /* NewsScreen.html */,
->>>>>>> FETCH_HEAD
 				28C8597418DDD3FB00C5374B /* black.png */,
 				28C8597218DDD3EF00C5374B /* ESO_-_Milky_Way.jpg */,
 			);
