@@ -266,7 +266,26 @@ NSString *kCellID = @"SetDetailsViewCellID";
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section;
 {
      return [_articlesArray count];
+
 }
+-(NSString *) stringByStrippingHTML:(NSString*)s
+{
+    NSRange r;
+    while ((r = [s rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location != NSNotFound)
+        s = [s stringByReplacingCharactersInRange:r withString:@""];
+    return s;
+}
+
+-(NSString*)trimLeadingWhitespace:(NSString*)inString {
+    NSInteger i = 0;
+
+    while ((i < [inString length])
+           && [[NSCharacterSet whitespaceCharacterSet] characterIsMember:[inString characterAtIndex:i]]) {
+        i++;
+    }
+    return [inString substringFromIndex:i];
+}
+
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath;
 {
@@ -274,9 +293,9 @@ NSString *kCellID = @"SetDetailsViewCellID";
 
     MHDArticle *article = [_articlesArray objectAtIndex:indexPath.row];
     
+    cell.tag = indexPath.row;
     
-    
-    
+
     NSArray *mediaArr;
     NSDictionary *medias;
     NSArray *pictureArr;
@@ -292,19 +311,22 @@ NSString *kCellID = @"SetDetailsViewCellID";
             if ( data == nil )
                 return;
             dispatch_async(dispatch_get_main_queue(), ^{
-                // WARNING: is the cell still using the same data by this point??
-                cell.newsImageView.image = [UIImage imageWithData: data];
-                
-                cell.titleLabel.text = article[@"title"];
-                cell.articleView.text = article[@"content"];
-                
+                if (cell)
+                {
+                    if (cell.tag == indexPath.row)
+                        cell.newsImageView.image = [UIImage imageWithData: data];
+                }
+
             });
         });
     }
-    
+
+    cell.titleLabel.text = [self trimLeadingWhitespace:article[@"title"]];
+    cell.articleView.text = [self stringByStrippingHTML:article[@"content"]];
+
     return cell;
 
-    
+
 }
 
 - (void)getImage:(NSString *)url {

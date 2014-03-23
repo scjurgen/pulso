@@ -29,7 +29,7 @@
                                     <constraint firstAttribute="height" constant="100" id="wiy-cG-I0T"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bottombar.png" translatesAutoresizingMaskIntoConstraints="NO" id="cdE-nZ-guG">
+                            <imageView userInteractionEnabled="NO" alpha="0.64999999999999969" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bottombar.png" translatesAutoresizingMaskIntoConstraints="NO" id="cdE-nZ-guG">
                                 <rect key="frame" x="0.0" y="829" width="768" height="95"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -37,8 +37,8 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="95" id="hTq-iy-CjJ"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfO-jl-Pur">
-                                <rect key="frame" x="10" y="959" width="87" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfO-jl-Pur">
+                                <rect key="frame" x="35" y="947" width="57" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="87" id="A4t-h4-ic7"/>
@@ -46,33 +46,15 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="cfT-dB-IUH"/>
                                     <constraint firstAttribute="height" constant="30" id="pxY-hN-pex"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
-                                <state key="normal" title="{==}">
+                                <state key="normal" image="list2.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="closeWebView:" destination="BV1-FR-VrT" eventType="touchUpInside" id="NhM-jF-3QH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3c-7K-VY3">
-                                <rect key="frame" x="10" y="862" width="87" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="87" id="ReL-HV-NvF"/>
-                                    <constraint firstAttribute="height" constant="30" id="Vyt-Lp-8Pn"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="87" id="eM9-Vd-Lw8"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="giP-Jv-8FN"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
-                                <state key="normal" title=":D">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="closeWebView:" destination="BV1-FR-VrT" eventType="touchUpInside" id="GKU-JC-1Yc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqI-5O-cUD">
-                                <rect key="frame" x="661" y="959" width="87" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqI-5O-cUD">
+                                <rect key="frame" x="685" y="947" width="54" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="3bH-GK-XVp"/>
@@ -80,8 +62,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="87" id="GtV-jh-gqD"/>
                                     <constraint firstAttribute="height" constant="30" id="eJS-hj-3mL"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
-                                <state key="normal" title=": )">
+                                <state key="normal" image="smiley.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -114,6 +95,8 @@
     <resources>
         <image name="bottom-bar.png" width="1024" height="100"/>
         <image name="bottombar.png" width="1024" height="100"/>
+        <image name="list2.png" width="114" height="114"/>
+        <image name="smiley.png" width="114" height="114"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
