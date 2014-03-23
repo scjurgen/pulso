@@ -7,12 +7,13 @@
 //
 
 #import "MHDViewController.h"
-#import "MHDRenderWebView.h"
+#import "MHDRenderArticle.h"
 
 #import <OpenGLES/EAGL.h>
 #import "MHDCardsWorld.h"
 #import "WebNewsEngine.h"
 #import "MHDHtmlFromArticle.h"
+#import "MHDWebRender.h"
 
 #define CLAMPPANX 5.0
 #define CLAMPPANY 3.0
@@ -27,7 +28,6 @@ char *testImages[] = {
 };
 
 
-//
 @interface MHDViewController ()
 {
     float _rotationX,_rotationY;
@@ -48,6 +48,8 @@ char *testImages[] = {
 
     WebNewsEngine *webNewsEngine;
     UIImage *renderedImage;
+    MHDRenderArticle *offlineRender;
+    MHDWebRender *webRender;
 }
 
 @property (strong, nonatomic) EAGLContext *context;
@@ -58,6 +60,7 @@ char *testImages[] = {
 
 @implementation MHDViewController
 
+
 - (void)applyPov
 {
     self.cardsWorld.worldPov.rotationX = - _rotationX;
@@ -65,21 +68,27 @@ char *testImages[] = {
     self.cardsWorld.worldPov.panX = _panX;
     self.cardsWorld.worldPov.panY = _panY;
     self.cardsWorld.worldPov.zoom = _currentZoom;
-
 }
+
 
 - (void)viewDidLoad
 {
-
     CGRect rc = CGRectMake(0,0,320.0,568.0);
 
-    MHDRenderWebView *webRender = [[MHDRenderWebView alloc] initWithFrame:rc];
-    [webRender render:nil withTemplate:@"NewsMainScreen" andBlock:^(UIImage *image) {
+//    offlineRender = [[MHDRenderArticle alloc] init];
+//    [offlineRender renderArticle:rc
+//                   withArticleId:@"da17228caa78f321e802f3641d69bed8"
+//                        andBlock:^(UIImage *image) {
+//                            renderedImage =  image;
+//                        }];
+    webRender = [[MHDWebRender alloc] initWithFrame:rc];
+    [webRender render:nil withTemplate:nil andBlock:^(UIImage *image) {
         renderedImage =  image;
-        
     }];
 
-    
+
+
+
     webNewsEngine = [[WebNewsEngine alloc] init];
     [webNewsEngine defineTemplate:@"NewsScreen"];
 
@@ -120,8 +129,8 @@ char *testImages[] = {
 
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchFrom:)];
     [self.view addGestureRecognizer:pinchRecognizer];
-    
-    
+
+
     // Insert BLock method!
     [webNewsEngine createHtmlUsingBlock:^(MHDArticle *article, NSString *template) {
         [_contentWebView loadHTMLString:[MHDHtmlFromArticle getHtmlFromArticle:article forTemplate:template] baseURL:nil];
@@ -129,13 +138,13 @@ char *testImages[] = {
 }
 
 - (NSString *)getHtmlFromArticle:(MHDArticle *)article forTemplate:(NSString *)template {
-    
+
     NSArray *mediaArr;
     NSDictionary *medias;
     NSArray *pictureArr;
     NSDictionary *pictures;
     NSArray *captionsArr;
-    
+
     if (article[@"medias"]) mediaArr = article[@"medias"];
     if (mediaArr[0]) medias = mediaArr[0];
     if (medias[@"references"]) pictureArr = medias[@"references"];
@@ -144,7 +153,7 @@ char *testImages[] = {
         NSString *substring = [pictures[@"url"] stringByReplacingOccurrencesOfString:@"w=550" withString:@"w=997"];
         template = [template stringByReplacingOccurrencesOfString:@"{pictureUrl}" withString:substring];
     }
-//    if (medias[@"caption"]) template = [template stringByReplacingOccurrencesOfString:@"{pictureString}" withString:medias[@"caption"]];
+    //    if (medias[@"caption"]) template = [template stringByReplacingOccurrencesOfString:@"{pictureString}" withString:medias[@"caption"]];
     if (article[@"captions"]) captionsArr = article[@"captions"];
     if (captionsArr[0]) template = [template stringByReplacingOccurrencesOfString:@"{headerTitle}" withString:captionsArr[0]];
     if (article[@"content"]) template = [template stringByReplacingOccurrencesOfString:@"{article}" withString:article[@"content"]];
@@ -333,8 +342,8 @@ char *testImages[] = {
     if (i==15)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
-//            NSString *name = [NSString stringWithFormat:@"TestImages/%s",testImages[rand()%(sizeof(testImages)/sizeof(char*))]];
-//            UIImage *image =  [UIImage imageNamed:name];
+            //            NSString *name = [NSString stringWithFormat:@"TestImages/%s",testImages[rand()%(sizeof(testImages)/sizeof(char*))]];
+            //            UIImage *image =  [UIImage imageNamed:name];
             UIImage *image =  renderedImage;
             [self.cardsWorld.textureAtlas updateTexture:rand()%12 row:rand()%7  image:image ];
         });

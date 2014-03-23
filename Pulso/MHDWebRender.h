@@ -1,5 +1,5 @@
 //
-//  MHDRenderWebView.h
+//  MHDWebRender.h
 //  Pulso
 //
 //  Created by Schwietering, Jürgen on 23.03.14.
@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
 typedef void(^MHDImageBlock)(UIImage *image);
 
-@interface MHDRenderWebView : UIWebView <UIWebViewDelegate>
+@interface MHDWebRender : UIWebView <UIWebViewDelegate>
+
+- (id)initWithFrame:(CGRect)frame;
 
 - (void)render:(NSString *)url
   withTemplate:(NSString *)templateName

@@ -1,16 +1,17 @@
 //
-//  MHDRenderWebView.m
+//  MHDWebRender.m
 //  Pulso
 //
 //  Created by Schwietering, Jürgen on 23.03.14.
 //  Copyright (c) 2014 Schwietering, Jürgen. All rights reserved.
 //
 
-#import "MHDRenderWebView.h"
+#import "MHDWebRender.h"
 #import "WebNewsEngine.h"
 #import "MHDHtmlFromArticle.h"
 
-@interface MHDRenderWebView()
+
+@interface MHDWebRender()
 {
     WebNewsEngine *webNewsEngine;
     MHDImageBlock successBlock;
@@ -18,7 +19,7 @@
 
 @end
 
-@implementation MHDRenderWebView
+@implementation MHDWebRender
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -32,19 +33,24 @@
 
 - (void)render:(NSString *)url
   withTemplate:(NSString *)templateName
-     andBlock:(MHDImageBlock)block
+      andBlock:(MHDImageBlock)block
 {
     successBlock = block;
     self.delegate = self;
     webNewsEngine = [[WebNewsEngine alloc] init];
     [webNewsEngine defineTemplate:templateName];
     [webNewsEngine createHtmlUsingBlock:^(MHDArticle *article, NSString *htmlstring)
-    {
-        [self loadHTMLString:[MHDHtmlFromArticle getHtmlFromArticle:article
-                                                        forTemplate:templateName]
-                     baseURL:nil];
-        [self webViewDidFinishLoad:self];
-    }];
+     {
+         NSString *str = [NSString stringWithFormat:@"http://www.nerdware.net/hackathon/article.php?id=%@",article[@"identifier"]];
+         NSURL *url = [NSURL URLWithString:str];
+         NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+         [self loadRequest:request];
+
+//         [self loadHTMLString:[MHDHtmlFromArticle getHtmlFromArticle:article
+//                                                         forTemplate:templateName]
+//                      baseURL:nil];
+//         [self webViewDidFinishLoad:self];
+     }];
 }
 
 
@@ -65,7 +71,5 @@
         successBlock(thumbImage);
     }
 }
-
-
 
 @end
