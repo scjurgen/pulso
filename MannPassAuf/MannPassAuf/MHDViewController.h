@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "CaptureSession.h"
-
+#import "SetDetailsViewCell.h"
 @interface MHDViewController : UIViewController <CaptureSessionDelegate>
 
+@property (weak, nonatomic) IBOutlet UICollectionView *newsCollectionView;
 @property (strong, nonatomic) CaptureSession *captureSession;
 @property (weak, nonatomic) IBOutlet UIImageView *sampledImage;
 

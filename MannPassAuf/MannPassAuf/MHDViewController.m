@@ -9,6 +9,9 @@
 #import "MHDViewController.h"
 #import <ImageIO/ImageIO.h>
 
+NSString *kCellID = @"SetDetailsViewCellID";
+
+
 @interface MHDViewController ()
 
 @end
@@ -18,6 +21,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    UINib *cellNib = [UINib nibWithNibName:@"SetDetailsViewCell_iPhone" bundle:nil];
+    [_newsCollectionView registerNib:cellNib forCellWithReuseIdentifier:kCellID];
+
 	// Do any additional setup after loading the view, typically from a nib.
     UIView *v = [self view];
     _captureSession = [[CaptureSession alloc] init];
@@ -80,5 +87,23 @@
 {
     [_captureSession captureStillImage];
 }
+
+#pragma mark - Collection View
+
+- (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section;
+{
+     return 20;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath;
+{
+    SetDetailsViewCell *cell = [_newsCollectionView dequeueReusableCellWithReuseIdentifier:kCellID forIndexPath:indexPath];
+
+    cell.titleLabel.text = @"Titel ist hier";
+    cell.newsImageView.image = [UIImage imageNamed:@"test1.png"];
+    cell.articleView.text = @"hallo world";
+    return cell;
+}
+
 
 @end
