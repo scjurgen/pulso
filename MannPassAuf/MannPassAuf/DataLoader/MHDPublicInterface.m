@@ -89,9 +89,9 @@
         case 9:
             return @"wondering";
         default:
+            return @"wondering";
             break;
     }
-    
 }
 
 @end
