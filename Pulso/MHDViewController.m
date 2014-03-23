@@ -104,7 +104,7 @@ char *testImages[] = {
 
     UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanFrom:)];
     panRecognizer.minimumNumberOfTouches = 1;
-    panRecognizer.maximumNumberOfTouches = 2;
+    panRecognizer.maximumNumberOfTouches = 3;
     [self.view addGestureRecognizer:panRecognizer];
 
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchFrom:)];
@@ -170,7 +170,7 @@ char *testImages[] = {
                 _lastPanX = _panX;
                 _lastPanY = _panY;
                 break;
-            case 2:
+            case 3:
                 _lastRotationX = _rotationX;
                 _lastRotationY = _rotationY;
                 break;
@@ -190,7 +190,7 @@ char *testImages[] = {
                     _panY  = [self clampFloat:_panY  minValue:-CLAMPPANY maxValue:CLAMPPANY];
                     NSLog(@"pan: %f,%f",_panX, _panY);
                     break;
-                case 2:
+                case 3:
                     _rotationX = _lastRotationX+(locStart.x-touchLocation.x)/100.0;
                     _rotationY = _lastRotationY+(touchLocation.y-locStart.y)/100.0;
                     _rotationX  = [self clampFloat:_rotationX  minValue:-CLAMPROTX maxValue:CLAMPROTX];
@@ -365,7 +365,7 @@ char *testImages[] = {
                 _panY  = [self clampFloat:_panY  minValue:-CLAMPPANY maxValue:CLAMPPANY];
 
                 break;
-            case 2:
+            case 3:
                 _lastRotationX -= relaseVelocity.x/2000.0;
                 _lastRotationY += relaseVelocity.y/2000.0;
                 _rotationX = _lastRotationX;
