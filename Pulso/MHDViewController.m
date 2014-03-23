@@ -50,7 +50,8 @@ char *testImages[] = {
 
 @property (strong, nonatomic) EAGLContext *context;
 @property (strong, nonatomic) MHDCardsWorld *cardsWorld;
-
+@property(nonatomic, assign)CGRect overShootTargetRect;
+@property(nonatomic, assign)CGRect targetRect;
 @end
 
 @implementation MHDViewController
@@ -111,12 +112,37 @@ char *testImages[] = {
     
     
     // Insert BLock method!
-    [webNewsEngine createHtmlUsingBlock:^(NSString *htmlContent) {
-        [_contentWebView loadHTMLString:htmlContent baseURL:nil];
+    [webNewsEngine createHtmlUsingBlock:^(MHDArticle *article, NSString *template) {
+        [_contentWebView loadHTMLString:[self getHtmlFromArticle:article forTemplate:template] baseURL:nil];
     }];
     
     
 }
+
+- (NSString *)getHtmlFromArticle:(MHDArticle *)article forTemplate:(NSString *)template {
+    
+    NSArray *mediaArr;
+    NSDictionary *medias;
+    NSArray *pictureArr;
+    NSDictionary *pictures;
+    NSArray *captionsArr;
+    
+    if (article[@"medias"]) mediaArr = article[@"medias"];
+    if (mediaArr[0]) medias = mediaArr[0];
+    if (medias[@"references"]) pictureArr = medias[@"references"];
+    if (pictureArr[0]) pictures = pictureArr[0];
+    if (pictures[@"url"]) {
+        NSString *substring = [pictures[@"url"] stringByReplacingOccurrencesOfString:@"w=550" withString:@"w=997"];
+        template = [template stringByReplacingOccurrencesOfString:@"{pictureUrl}" withString:substring];
+    }
+//    if (medias[@"caption"]) template = [template stringByReplacingOccurrencesOfString:@"{pictureString}" withString:medias[@"caption"]];
+    if (article[@"captions"]) captionsArr = article[@"captions"];
+    if (captionsArr[0]) template = [template stringByReplacingOccurrencesOfString:@"{headerTitle}" withString:captionsArr[0]];
+    if (article[@"content"]) template = [template stringByReplacingOccurrencesOfString:@"{article}" withString:article[@"content"]];
+    if (article[@"category"]) template = [template stringByReplacingOccurrencesOfString:@"{topicName}" withString:article[@"category"]];
+    return template;
+}
+
 
 - (float)clampFloat:(float)invalue minValue:(float)minValue maxValue:(float)maxValue
 {
@@ -215,8 +241,8 @@ char *testImages[] = {
         {
             CGPoint p[4];
 
-            CGRect targetRect = CGRectMake(0,0,1024.0,768.0-100.0);
-            targetRect = CGRectInset(targetRect,20,20);
+            self.targetRect = CGRectMake(0,0,1024.0,768.0-100.0);
+            self.targetRect = CGRectInset(self.targetRect,20,20);
             int ret = [self.cardsWorld tapWorld:self.view.bounds.size
                                               x:locStart.x
                                               y:locStart.y
@@ -224,24 +250,24 @@ char *testImages[] = {
             if (ret != -1)
             {
 
-                CGPoint pt1 = CGPointMake((p[0].x/2.0+0.5)*targetRect.size.width,
-                                          (p[0].y/2.0+0.5)*targetRect.size.height);
-                CGPoint pt2 = CGPointMake((p[3].x/2.0+0.5)*targetRect.size.width,
-                                          (p[3].y/2.0+0.5)*targetRect.size.height);
+                CGPoint pt1 = CGPointMake((p[0].x/2.0+0.5)*self.targetRect.size.width,
+                                          (p[0].y/2.0+0.5)*self.targetRect.size.height);
+                CGPoint pt2 = CGPointMake((p[3].x/2.0+0.5)*self.targetRect.size.width,
+                                          (p[3].y/2.0+0.5)*self.targetRect.size.height);
                 originalOpenRect.origin.x = pt1.x;
-                originalOpenRect.origin.y = (targetRect.size.height-pt2.y);
+                originalOpenRect.origin.y = (self.targetRect.size.height-pt2.y);
                 originalOpenRect.size.width = pt2.x-pt1.x;
                 originalOpenRect.size.height = pt2.y-pt1.y;
 
                 self.contentWebView.frame = originalOpenRect;
                 self.contentWebView.alpha = 0.0;
-                CGRect overShootTargetRect = CGRectInset(targetRect,-20,-20);
+                self.overShootTargetRect = CGRectInset(self.targetRect,-20,-20);
                 [UIView animateWithDuration:0.2 animations:^{
-                    self.contentWebView.frame = overShootTargetRect;
+                    self.contentWebView.frame = self.overShootTargetRect;
                     self.contentWebView.alpha = 0.9;
                 } completion:^(BOOL finished) {
                     [UIView animateWithDuration:0.2 animations:^{
-                        self.contentWebView.frame = CGRectInset(overShootTargetRect, 5,5);
+                        self.contentWebView.frame = CGRectInset(self.overShootTargetRect, 5,5);
                         self.contentWebView.alpha = 0.9;
 
                     }];

@@ -1,37 +1,59 @@
 <html>
     <head>
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" media="screen" href="http://openfontlibrary.org/face/gentium" rel="stylesheet" type="text/css"/>
         <style type="text/css">
-            body {font-family:"Arial, Helvetica, sans-serif"; }
+            
+            body {font-family: 'Open Sans', sans-serif; }
 
-            h1.small {text-align: left; font:bold 16px Helvetica, sans-serif; }
-            h1.normal {text-align: left; font:bold 20px Helvetica, sans-serif; }
-            h1.large {text-align: left; font: bold 24px Helvetica, sans-serif; }
+            h1.small {text-align: left; font-size: 20px; font-family: 'Open Sans', sans-serif; font-weight: Bold; }
+            h1.normal {text-align: left; font-size: 24px; font-family: 'Open Sans', sans-serif; font-weight: Bold; }
+            h1.large {text-align: left; font-size: 28px; font-family: 'Open Sans', sans-serif; font-weight: Bold; }
 
             h3.small {text-align: left; font:italic 10px Helvetica, sans-serif;}
             h3.normal {text-align: left; font:italic 12px Helvetica, sans-serif; }
             h3.large {text-align: left; font:italic 14px Helvetica, sans-serif;}
 
-            div.small {text-align: justify; font:10px Helvetica, sans-serif; }
-            div.normal {text-align: justify; font:14px Helvetica, sans-serif; }
-            div.large {text-align: justify; font:20px Helvetica, sans-serif;}
+            div.small {text-align: justify; font:12px 'Gentium Book Basic', sans-serif; }
+            div.normal {text-align: justify; font:16px 'Gentium Book Basic', sans-serif; }
+            div.large {text-align: justify; font:20px 'Gentium Book Basic', sans-serif;}
 
-            div.cprsmall {text-align: justify; font:italic 10px Helvetica, sans-serif; }
-            div.cprnormal {text-align: justify; font:italic 12px Helvetica, sans-serif; }
-            div.cprlarge {text-align: justify; font:italic 14px Helvetica, sans-serif;}
+            div.cprsmall {text-align: justify; font:italic 10px 'Gentium Book Basic', sans-serif; }
+            div.cprnormal {text-align: justify; font:italic 14px 'Gentium Book Basic', sans-serif; }
+            div.cprlarge {text-align: justify; font:italic 16px 'Gentium Book Basic', sans-serif;}
 
-
-            .floatright
-            {
-                text-align: right;
-                font:italic 10px Helvetica, sans-serif;
+            #newstext {
+                font-family: 'Gentium Book Basic';
+                font-style: normal;
+                font-size: 14px;
                 float: right;
-                width: 500px;
-                margin: 5px 5px 5px 5px;
-                padding: 5px;
-
+                width: 550px;
+                color:#666666;
             }
-
-            </style>
+        
+            #topicname {
+                float:right;
+                width:100px;
+                height:20px;
+                margin-right:20px;
+                margin-top:10px;
+                border-width:1px;
+                border-style:solid;
+                color:#666666;
+            
+            }
+        
+            #newstitle {
+                float:left;
+                margin-left:20px;
+                width:380px;
+                height:440px;
+                font-size: 24px;
+                font: 'Open Sans Bold';
+                color:#666666;
+            }
+        
+        </style>
         <script type="text/javascript">
             function upSize()
             {
@@ -83,22 +105,28 @@
             }
         }
         
-        var $pictureWidth = body.width - 19;
+        
+        
+        var $pictureWidth = body.width;
         </script>
     </head>
     <body>
-
+        </br></br>
         <div><small onclick="downSize()" style="font-size:18px">&nbsp;-A&nbsp;</small> |  <b onclick="upSize()" style="font-size:22px">&nbsp;A+&nbsp;</b>
         </div>
         <hr style="height:1px;border-width:0;color:#0d0d0d;background-color:#0d0d0d" />
-        <div class="bigpicture" width=pictureWidth padding-top:10px padding-left:10px>
-            <img src="{pictureUrl}" max-width:100% alt="image event"/><br/>{pictureTitle}
+        <div style="width:pictureWidth; height:330px; overflow:hidden; float:left">
+            <img id="titlePic" src="{pictureUrl}" style="max-width:pictureWidth; height=330px; alt="image event"; float:left"/><br/>
         </div>
         
-        <h1 id="newstitle" class="normal">{headerTitle}</h1>
-        
-        <div id="newstext" class="normal">
+        <div id="newstext">
             {article}
         </div>
+        
+        <div id="topicname"><center>{topicName}</center></div>
+        
+        <h1 id="newstitle">{headerTitle}</h1>
+        
+        
     </body>
 </html>
