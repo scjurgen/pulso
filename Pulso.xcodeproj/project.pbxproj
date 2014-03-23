@@ -10,9 +10,10 @@
 		286704EF18DDFB17000619EC /* glitch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 286704EE18DDFB17000619EC /* glitch.jpg */; };
 		28AE8FCD18DE26B70064AA59 /* bottom-bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 28AE8FCC18DE26B70064AA59 /* bottom-bar.png */; };
 		28AE8FD118DE3F4B0064AA59 /* MHDCardLife.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AE8FD018DE3F4B0064AA59 /* MHDCardLife.m */; };
-		28AE901A18DE68990064AA59 /* MHDRenderWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AE901918DE68990064AA59 /* MHDRenderWebView.m */; };
+		28AE901A18DE68990064AA59 /* MHDRenderArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AE901918DE68990064AA59 /* MHDRenderArticle.m */; };
 		28AE901C18DE74080064AA59 /* NewsMainScreen.html in Resources */ = {isa = PBXBuildFile; fileRef = 28AE901B18DE74080064AA59 /* NewsMainScreen.html */; };
 		28AE901F18DE75550064AA59 /* MHDHtmlFromArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AE901E18DE75550064AA59 /* MHDHtmlFromArticle.m */; };
+		28AE902218DE939A0064AA59 /* MHDWebRender.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AE902118DE939A0064AA59 /* MHDWebRender.m */; };
 		28C8593418DDCFA500C5374B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C8593318DDCFA500C5374B /* Foundation.framework */; };
 		28C8593618DDCFA500C5374B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C8593518DDCFA500C5374B /* CoreGraphics.framework */; };
 		28C8593818DDCFA500C5374B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C8593718DDCFA500C5374B /* UIKit.framework */; };
@@ -70,11 +71,13 @@
 		28AE8FCE18DE32880064AA59 /* geometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = geometry.h; sourceTree = "<group>"; };
 		28AE8FCF18DE3F4B0064AA59 /* MHDCardLife.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDCardLife.h; sourceTree = "<group>"; };
 		28AE8FD018DE3F4B0064AA59 /* MHDCardLife.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDCardLife.m; sourceTree = "<group>"; };
-		28AE901818DE68990064AA59 /* MHDRenderWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDRenderWebView.h; sourceTree = "<group>"; };
-		28AE901918DE68990064AA59 /* MHDRenderWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDRenderWebView.m; sourceTree = "<group>"; };
+		28AE901818DE68990064AA59 /* MHDRenderArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDRenderArticle.h; sourceTree = "<group>"; };
+		28AE901918DE68990064AA59 /* MHDRenderArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDRenderArticle.m; sourceTree = "<group>"; };
 		28AE901B18DE74080064AA59 /* NewsMainScreen.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = NewsMainScreen.html; sourceTree = "<group>"; };
 		28AE901D18DE75550064AA59 /* MHDHtmlFromArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDHtmlFromArticle.h; sourceTree = "<group>"; };
 		28AE901E18DE75550064AA59 /* MHDHtmlFromArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDHtmlFromArticle.m; sourceTree = "<group>"; };
+		28AE902018DE939A0064AA59 /* MHDWebRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDWebRender.h; sourceTree = "<group>"; };
+		28AE902118DE939A0064AA59 /* MHDWebRender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDWebRender.m; sourceTree = "<group>"; };
 		28C8593018DDCFA500C5374B /* Pulso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pulso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C8593318DDCFA500C5374B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		28C8593518DDCFA500C5374B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -215,8 +218,10 @@
 				28C8595118DDCFA500C5374B /* MHDViewController.m */,
 				28C8595318DDCFA500C5374B /* Images.xcassets */,
 				28C8593E18DDCFA500C5374B /* Supporting Files */,
-				28AE901818DE68990064AA59 /* MHDRenderWebView.h */,
-				28AE901918DE68990064AA59 /* MHDRenderWebView.m */,
+				28AE901818DE68990064AA59 /* MHDRenderArticle.h */,
+				28AE901918DE68990064AA59 /* MHDRenderArticle.m */,
+				28AE902018DE939A0064AA59 /* MHDWebRender.h */,
+				28AE902118DE939A0064AA59 /* MHDWebRender.m */,
 			);
 			path = Pulso;
 			sourceTree = "<group>";
@@ -472,7 +477,8 @@
 				28C8599A18DDD4B900C5374B /* TextureAtlas.m in Sources */,
 				28C8599B18DDD4B900C5374B /* TiltSensor.m in Sources */,
 				28C8599818DDD4B900C5374B /* Model3DInteraction.m in Sources */,
-				28AE901A18DE68990064AA59 /* MHDRenderWebView.m in Sources */,
+				28AE901A18DE68990064AA59 /* MHDRenderArticle.m in Sources */,
+				28AE902218DE939A0064AA59 /* MHDWebRender.m in Sources */,
 				28C859A818DDD55200C5374B /* OpenGlError.m in Sources */,
 				28C8599918DDD4B900C5374B /* SkyBox.m in Sources */,
 				28C859A018DDD4F000C5374B /* WebNewsEngine.m in Sources */,
