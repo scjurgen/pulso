@@ -14,6 +14,7 @@
 #import "WebNewsEngine.h"
 #import "MHDHtmlFromArticle.h"
 #import "MHDWebRender.h"
+#import "CaptureSession.h"
 
 #define CLAMPPANX 5.0
 #define CLAMPPANY 3.0
@@ -93,9 +94,35 @@ char *testImages[] = {
     }];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [[_captureSession captureSession] startRunning];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[_captureSession captureSession] stopRunning];
+}
+
+- (void)initAntiBumpYourHeadMode
+{
+UIView *v = [self view];
+_captureSession = [[CaptureSession alloc] init];
+_captureSession.delegate = self;
+
+[_captureSession addVideoInput];
+[_captureSession addVideoPreviewLayer];
+
+CGRect layerRect = v.layer.bounds;
+[_captureSession.previewLayer setBounds:layerRect];
+[_captureSession.previewLayer setPosition:CGPointMake(CGRectGetMidX(layerRect),
+                                                      CGRectGetMidY(layerRect))];
+[v.layer insertSublayer:_captureSession.previewLayer atIndex:0];
+}
 
 - (void)viewDidLoad
 {
+    [self initAntiBumpYourHeadMode];
     articleLoadedCount = 0;
     [self loadMoreCards];
 

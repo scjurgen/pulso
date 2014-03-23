@@ -1,0 +1,482 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		28AE8FDF18DE46640064AA59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28AE8FDE18DE46640064AA59 /* Foundation.framework */; };
+		28AE8FE118DE46640064AA59 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28AE8FE018DE46640064AA59 /* CoreGraphics.framework */; };
+		28AE8FE318DE46640064AA59 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28AE8FE218DE46640064AA59 /* UIKit.framework */; };
+		28AE8FE918DE46640064AA59 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 28AE8FE718DE46640064AA59 /* InfoPlist.strings */; };
+		28AE8FEB18DE46640064AA59 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AE8FEA18DE46640064AA59 /* main.m */; };
+		28AE8FEF18DE46640064AA59 /* MHDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AE8FEE18DE46640064AA59 /* MHDAppDelegate.m */; };
+		28AE8FF218DE46640064AA59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28AE8FF018DE46640064AA59 /* Main.storyboard */; };
+		28AE8FF518DE46640064AA59 /* MHDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AE8FF418DE46640064AA59 /* MHDViewController.m */; };
+		28AE8FF718DE46640064AA59 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28AE8FF618DE46640064AA59 /* Images.xcassets */; };
+		28AE8FFE18DE46640064AA59 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28AE8FFD18DE46640064AA59 /* XCTest.framework */; };
+		28AE8FFF18DE46640064AA59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28AE8FDE18DE46640064AA59 /* Foundation.framework */; };
+		28AE900018DE46640064AA59 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28AE8FE218DE46640064AA59 /* UIKit.framework */; };
+		28AE900818DE46640064AA59 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 28AE900618DE46640064AA59 /* InfoPlist.strings */; };
+		28AE900A18DE46640064AA59 /* MannPassAufTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AE900918DE46640064AA59 /* MannPassAufTests.m */; };
+		28AE901518DE48310064AA59 /* CaptureSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AE901418DE48310064AA59 /* CaptureSession.m */; };
+		28AE901718DE4C100064AA59 /* test1.png in Resources */ = {isa = PBXBuildFile; fileRef = 28AE901618DE4C100064AA59 /* test1.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		28AE900118DE46640064AA59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28AE8FD318DE46640064AA59 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28AE8FDA18DE46640064AA59;
+			remoteInfo = MannPassAuf;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		28AE8FDB18DE46640064AA59 /* MannPassAuf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MannPassAuf.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		28AE8FDE18DE46640064AA59 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		28AE8FE018DE46640064AA59 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		28AE8FE218DE46640064AA59 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		28AE8FE618DE46640064AA59 /* MannPassAuf-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MannPassAuf-Info.plist"; sourceTree = "<group>"; };
+		28AE8FE818DE46640064AA59 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		28AE8FEA18DE46640064AA59 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		28AE8FEC18DE46640064AA59 /* MannPassAuf-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MannPassAuf-Prefix.pch"; sourceTree = "<group>"; };
+		28AE8FED18DE46640064AA59 /* MHDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MHDAppDelegate.h; sourceTree = "<group>"; };
+		28AE8FEE18DE46640064AA59 /* MHDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHDAppDelegate.m; sourceTree = "<group>"; };
+		28AE8FF118DE46640064AA59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		28AE8FF318DE46640064AA59 /* MHDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MHDViewController.h; sourceTree = "<group>"; };
+		28AE8FF418DE46640064AA59 /* MHDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHDViewController.m; sourceTree = "<group>"; };
+		28AE8FF618DE46640064AA59 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		28AE8FFC18DE46640064AA59 /* MannPassAufTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MannPassAufTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		28AE8FFD18DE46640064AA59 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		28AE900518DE46640064AA59 /* MannPassAufTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MannPassAufTests-Info.plist"; sourceTree = "<group>"; };
+		28AE900718DE46640064AA59 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		28AE900918DE46640064AA59 /* MannPassAufTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MannPassAufTests.m; sourceTree = "<group>"; };
+		28AE901318DE48310064AA59 /* CaptureSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureSession.h; sourceTree = "<group>"; };
+		28AE901418DE48310064AA59 /* CaptureSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureSession.m; sourceTree = "<group>"; };
+		28AE901618DE4C100064AA59 /* test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test1.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		28AE8FD818DE46640064AA59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AE8FE118DE46640064AA59 /* CoreGraphics.framework in Frameworks */,
+				28AE8FE318DE46640064AA59 /* UIKit.framework in Frameworks */,
+				28AE8FDF18DE46640064AA59 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28AE8FF918DE46640064AA59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AE8FFE18DE46640064AA59 /* XCTest.framework in Frameworks */,
+				28AE900018DE46640064AA59 /* UIKit.framework in Frameworks */,
+				28AE8FFF18DE46640064AA59 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		28AE8FD218DE46640064AA59 = {
+			isa = PBXGroup;
+			children = (
+				28AE8FE418DE46640064AA59 /* MannPassAuf */,
+				28AE900318DE46640064AA59 /* MannPassAufTests */,
+				28AE8FDD18DE46640064AA59 /* Frameworks */,
+				28AE8FDC18DE46640064AA59 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		28AE8FDC18DE46640064AA59 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				28AE8FDB18DE46640064AA59 /* MannPassAuf.app */,
+				28AE8FFC18DE46640064AA59 /* MannPassAufTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		28AE8FDD18DE46640064AA59 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				28AE8FDE18DE46640064AA59 /* Foundation.framework */,
+				28AE8FE018DE46640064AA59 /* CoreGraphics.framework */,
+				28AE8FE218DE46640064AA59 /* UIKit.framework */,
+				28AE8FFD18DE46640064AA59 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		28AE8FE418DE46640064AA59 /* MannPassAuf */ = {
+			isa = PBXGroup;
+			children = (
+				28AE901618DE4C100064AA59 /* test1.png */,
+				28AE901318DE48310064AA59 /* CaptureSession.h */,
+				28AE901418DE48310064AA59 /* CaptureSession.m */,
+				28AE8FED18DE46640064AA59 /* MHDAppDelegate.h */,
+				28AE8FEE18DE46640064AA59 /* MHDAppDelegate.m */,
+				28AE8FF018DE46640064AA59 /* Main.storyboard */,
+				28AE8FF318DE46640064AA59 /* MHDViewController.h */,
+				28AE8FF418DE46640064AA59 /* MHDViewController.m */,
+				28AE8FF618DE46640064AA59 /* Images.xcassets */,
+				28AE8FE518DE46640064AA59 /* Supporting Files */,
+			);
+			path = MannPassAuf;
+			sourceTree = "<group>";
+		};
+		28AE8FE518DE46640064AA59 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				28AE8FE618DE46640064AA59 /* MannPassAuf-Info.plist */,
+				28AE8FE718DE46640064AA59 /* InfoPlist.strings */,
+				28AE8FEA18DE46640064AA59 /* main.m */,
+				28AE8FEC18DE46640064AA59 /* MannPassAuf-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		28AE900318DE46640064AA59 /* MannPassAufTests */ = {
+			isa = PBXGroup;
+			children = (
+				28AE900918DE46640064AA59 /* MannPassAufTests.m */,
+				28AE900418DE46640064AA59 /* Supporting Files */,
+			);
+			path = MannPassAufTests;
+			sourceTree = "<group>";
+		};
+		28AE900418DE46640064AA59 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				28AE900518DE46640064AA59 /* MannPassAufTests-Info.plist */,
+				28AE900618DE46640064AA59 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		28AE8FDA18DE46640064AA59 /* MannPassAuf */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28AE900D18DE46640064AA59 /* Build configuration list for PBXNativeTarget "MannPassAuf" */;
+			buildPhases = (
+				28AE8FD718DE46640064AA59 /* Sources */,
+				28AE8FD818DE46640064AA59 /* Frameworks */,
+				28AE8FD918DE46640064AA59 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MannPassAuf;
+			productName = MannPassAuf;
+			productReference = 28AE8FDB18DE46640064AA59 /* MannPassAuf.app */;
+			productType = "com.apple.product-type.application";
+		};
+		28AE8FFB18DE46640064AA59 /* MannPassAufTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28AE901018DE46640064AA59 /* Build configuration list for PBXNativeTarget "MannPassAufTests" */;
+			buildPhases = (
+				28AE8FF818DE46640064AA59 /* Sources */,
+				28AE8FF918DE46640064AA59 /* Frameworks */,
+				28AE8FFA18DE46640064AA59 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				28AE900218DE46640064AA59 /* PBXTargetDependency */,
+			);
+			name = MannPassAufTests;
+			productName = MannPassAufTests;
+			productReference = 28AE8FFC18DE46640064AA59 /* MannPassAufTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		28AE8FD318DE46640064AA59 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MHD;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Schwietering, Jürgen";
+				TargetAttributes = {
+					28AE8FFB18DE46640064AA59 = {
+						TestTargetID = 28AE8FDA18DE46640064AA59;
+					};
+				};
+			};
+			buildConfigurationList = 28AE8FD618DE46640064AA59 /* Build configuration list for PBXProject "MannPassAuf" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 28AE8FD218DE46640064AA59;
+			productRefGroup = 28AE8FDC18DE46640064AA59 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				28AE8FDA18DE46640064AA59 /* MannPassAuf */,
+				28AE8FFB18DE46640064AA59 /* MannPassAufTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		28AE8FD918DE46640064AA59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AE8FF718DE46640064AA59 /* Images.xcassets in Resources */,
+				28AE901718DE4C100064AA59 /* test1.png in Resources */,
+				28AE8FE918DE46640064AA59 /* InfoPlist.strings in Resources */,
+				28AE8FF218DE46640064AA59 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28AE8FFA18DE46640064AA59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AE900818DE46640064AA59 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		28AE8FD718DE46640064AA59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AE8FF518DE46640064AA59 /* MHDViewController.m in Sources */,
+				28AE8FEF18DE46640064AA59 /* MHDAppDelegate.m in Sources */,
+				28AE8FEB18DE46640064AA59 /* main.m in Sources */,
+				28AE901518DE48310064AA59 /* CaptureSession.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28AE8FF818DE46640064AA59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AE900A18DE46640064AA59 /* MannPassAufTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		28AE900218DE46640064AA59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28AE8FDA18DE46640064AA59 /* MannPassAuf */;
+			targetProxy = 28AE900118DE46640064AA59 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		28AE8FE718DE46640064AA59 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28AE8FE818DE46640064AA59 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		28AE8FF018DE46640064AA59 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28AE8FF118DE46640064AA59 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		28AE900618DE46640064AA59 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28AE900718DE46640064AA59 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		28AE900B18DE46640064AA59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		28AE900C18DE46640064AA59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		28AE900E18DE46640064AA59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MannPassAuf/MannPassAuf-Prefix.pch";
+				INFOPLIST_FILE = "MannPassAuf/MannPassAuf-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		28AE900F18DE46640064AA59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MannPassAuf/MannPassAuf-Prefix.pch";
+				INFOPLIST_FILE = "MannPassAuf/MannPassAuf-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		28AE901118DE46640064AA59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MannPassAuf.app/MannPassAuf";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MannPassAuf/MannPassAuf-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MannPassAufTests/MannPassAufTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		28AE901218DE46640064AA59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MannPassAuf.app/MannPassAuf";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MannPassAuf/MannPassAuf-Prefix.pch";
+				INFOPLIST_FILE = "MannPassAufTests/MannPassAufTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		28AE8FD618DE46640064AA59 /* Build configuration list for PBXProject "MannPassAuf" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28AE900B18DE46640064AA59 /* Debug */,
+				28AE900C18DE46640064AA59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28AE900D18DE46640064AA59 /* Build configuration list for PBXNativeTarget "MannPassAuf" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28AE900E18DE46640064AA59 /* Debug */,
+				28AE900F18DE46640064AA59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		28AE901018DE46640064AA59 /* Build configuration list for PBXNativeTarget "MannPassAufTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28AE901118DE46640064AA59 /* Debug */,
+				28AE901218DE46640064AA59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 28AE8FD318DE46640064AA59 /* Project object */;
+}

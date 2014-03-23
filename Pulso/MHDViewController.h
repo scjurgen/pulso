@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
+#import "CaptureSession.h"
 
-@interface MHDViewController : GLKViewController
+
+@interface MHDViewController : GLKViewController <CaptureSessionDelegate>
+
+@property (strong, nonatomic) CaptureSession *captureSession;
+
 
 @property (weak, nonatomic) IBOutlet UIWebView *contentWebView;
 
