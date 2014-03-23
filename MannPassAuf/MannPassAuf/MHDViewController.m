@@ -8,17 +8,12 @@
 
 #import "MHDViewController.h"
 #import <ImageIO/ImageIO.h>
-#import "DataLoader/MHDPublicInterface.h"
-#import "DataLoader/DataTypes/MHDArticleList.h"
-#import "DataLoader/DataTypes/MHDArticle.h"
-
 
 NSString *kCellID = @"SetDetailsViewCellID";
 
 
 @interface MHDViewController ()
 @property(nonatomic, retain)UIView *sideMenu;
-@property(nonatomic, retain)NSMutableArray *articlesArray;
 @end
 
 @implementation MHDViewController
@@ -43,13 +38,10 @@ NSString *kCellID = @"SetDetailsViewCellID";
     [_captureSession.previewLayer setPosition:CGPointMake(CGRectGetMidX(layerRect),
                                                           CGRectGetMidY(layerRect))];
     [v.layer insertSublayer:_captureSession.previewLayer atIndex:0];
-//    overlayImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"overlaymask"]];
-//    [overlayImageView setFrame:CGRectMake(0, 0, v.bounds.size.width, v.bounds.size.height)];
 
-
-    UIButton *menuButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 30, 100, 20)];
+    UIButton *menuButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 520, 100, 40)];
     [menuButton addTarget:self action:@selector(menuButtonPushed:) forControlEvents:UIControlEventTouchUpInside];
-    [menuButton setTitle:@"I feel..." forState:UIControlStateNormal];
+    [menuButton setTitle:@"💉" forState:UIControlStateNormal];
     menuButton.enabled = YES;
     [self.view addSubview:menuButton];
     
@@ -57,146 +49,78 @@ NSString *kCellID = @"SetDetailsViewCellID";
 }
 
 - (void)setupSideMenu {
-    
+    CGFloat advanceY = 44.0;
+    CGFloat buttonHeight=44.0;
     _sideMenu = [[UIView alloc] initWithFrame:CGRectMake(-50, 0, 50, self.view.frame.size.height)];
     _sideMenu.backgroundColor = [UIColor darkGrayColor];
-    _sideMenu.alpha = 0.5;
+    _sideMenu.alpha = 0.9;
     [self.view addSubview:_sideMenu];
+    CGFloat y=0.0;
     
-    UIButton *angry = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 20)];
+    UIButton *angry = [[UIButton alloc] initWithFrame:CGRectMake(0, y+=advanceY, 50, buttonHeight)];
     [angry addTarget:self action:@selector(moodButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     angry.tag = 1;
-    [angry setTitle:@"angry" forState:UIControlStateNormal];
+    [angry setTitle:@"😠" forState:UIControlStateNormal];
     [_sideMenu addSubview:angry];
     
-    UIButton *confused = [[UIButton alloc] initWithFrame:CGRectMake(0, 20, 50, 20)];
+    UIButton *confused = [[UIButton alloc] initWithFrame:CGRectMake(0, y+=advanceY, 50, buttonHeight)];
     [confused addTarget:self action:@selector(moodButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     confused.tag = 2;
-    [confused setTitle:@"confused" forState:UIControlStateNormal];
+    [confused setTitle:@"😵" forState:UIControlStateNormal];
     [_sideMenu addSubview:confused];
     
-    UIButton *cool = [[UIButton alloc] initWithFrame:CGRectMake(0, 40, 50, 20)];
+    UIButton *cool = [[UIButton alloc] initWithFrame:CGRectMake(0, y+=advanceY, 50, buttonHeight)];
     [cool addTarget:self action:@selector(moodButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     cool.tag = 3;
-    [cool setTitle:@"cool" forState:UIControlStateNormal];
+    [cool setTitle:@"😎" forState:UIControlStateNormal];
     [_sideMenu addSubview:cool];
     
-    UIButton *happy = [[UIButton alloc] initWithFrame:CGRectMake(0, 60, 50, 20)];
+    UIButton *happy = [[UIButton alloc] initWithFrame:CGRectMake(0, y+=advanceY, 50, buttonHeight)];
     [happy addTarget:self action:@selector(moodButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     happy.tag = 4;
-    [happy setTitle:@"happy" forState:UIControlStateNormal];
+    [happy setTitle:@"😃" forState:UIControlStateNormal];
     [_sideMenu addSubview:happy];
     
-    UIButton *neutral = [[UIButton alloc] initWithFrame:CGRectMake(0, 80, 50, 20)];
+    UIButton *neutral = [[UIButton alloc] initWithFrame:CGRectMake(0, y+=advanceY, 50, buttonHeight)];
     [neutral addTarget:self action:@selector(moodButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     neutral.tag = 5;
-    [neutral setTitle:@"neutral" forState:UIControlStateNormal];
+    [neutral setTitle:@"😑" forState:UIControlStateNormal];
     [_sideMenu addSubview:neutral];
     
-    UIButton *sad = [[UIButton alloc] initWithFrame:CGRectMake(0, 100, 50, 20)];
+    UIButton *sad = [[UIButton alloc] initWithFrame:CGRectMake(0, y+=advanceY, 50, buttonHeight)];
     [sad addTarget:self action:@selector(moodButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     sad.tag = 6;
-    [sad setTitle:@"sad" forState:UIControlStateNormal];
+    [sad setTitle:@"😢" forState:UIControlStateNormal];
     [_sideMenu addSubview:sad];
     
-    UIButton *shocked = [[UIButton alloc] initWithFrame:CGRectMake(0, 120, 50, 20)];
+    UIButton *shocked = [[UIButton alloc] initWithFrame:CGRectMake(0, y+=advanceY, 50, buttonHeight)];
     [shocked addTarget:self action:@selector(moodButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     shocked.tag = 7;
-    [shocked setTitle:@"shocked" forState:UIControlStateNormal];
+    [shocked setTitle:@"😱" forState:UIControlStateNormal];
     [_sideMenu addSubview:shocked];
     
-    UIButton *smile = [[UIButton alloc] initWithFrame:CGRectMake(0, 140, 50, 20)];
+    UIButton *smile = [[UIButton alloc] initWithFrame:CGRectMake(0, y+=advanceY, 50, buttonHeight)];
     [smile addTarget:self action:@selector(moodButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     smile.tag = 8;
-    [smile setTitle:@"smile" forState:UIControlStateNormal];
+    [smile setTitle:@"😄" forState:UIControlStateNormal];
     [_sideMenu addSubview:smile];
     
-    UIButton *tongue = [[UIButton alloc] initWithFrame:CGRectMake(0, 160, 50, 20)];
+    UIButton *tongue = [[UIButton alloc] initWithFrame:CGRectMake(0, y+=advanceY, 50, buttonHeight)];
     [tongue addTarget:self action:@selector(moodButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     tongue.tag = 9;
-    [tongue setTitle:@"tongue" forState:UIControlStateNormal];
+    [tongue setTitle:@"😛" forState:UIControlStateNormal];
     [_sideMenu addSubview:tongue];
     
-    UIButton *wondering = [[UIButton alloc] initWithFrame:CGRectMake(0, 180, 50, 20)];
+    UIButton *wondering = [[UIButton alloc] initWithFrame:CGRectMake(0, y+=advanceY, 50, buttonHeight)];
     [wondering addTarget:self action:@selector(moodButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     wondering.tag = 10;
-    [wondering setTitle:@"wondering" forState:UIControlStateNormal];
+    [wondering setTitle:@"😳" forState:UIControlStateNormal];
     [_sideMenu addSubview:wondering];
 }
 
 - (void)moodButtonAction:(id)sender {
-    UIButton *btn = sender;
-    
-    MHDMoods moods;
-    switch (btn.tag) {
-        case 1:
-            moods = 0;
-            break;
-        case 2:
-            moods = 1;
-            break;
-        case 3:
-            moods = 2;
-            break;
-        case 4:
-            moods = 3;
-            break;
-        case 5:
-            moods = 4;
-            break;
-        case 6:
-            moods = 5;
-            break;
-        case 7:
-            moods = 6;
-            break;
-        case 8:
-            moods = 7;
-            break;
-        case 9:
-            moods = 8;
-            break;
-        case 10:
-            moods = 9;
-            break;
-        default:
-            break;
-    }
-    
-    
-    
-    [MHDPublicInterface getArticlesForMood:moods
-                                 onSuccess:^(id resultSuccess) {
-                                     [self processResultForList:(MHDArticleList *)resultSuccess];
-                                 }
-                                 onFailure:^(id resultFailure) {
-                                     
-                                 }];
-    
-    
-    
-    
+    [[[UIAlertView alloc] initWithTitle:@"Your mood" message:@"Mood not found. Please get into the mood!" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil] show];
 }
-
-- (void)processResultForList:(MHDArticleList *)list {
-    _articlesArray = [[NSMutableArray alloc] init];
-    for (NSString *articleId in list.articlesList) {
-        
-        [MHDPublicInterface getArticleForId:articleId
-                                  onSuccess:^(id resultSuccess) {
-                                      MHDArticle *article = (MHDArticle *)resultSuccess;
-                                      
-                                      [_articlesArray addObject:article];
-                                  }
-                                  onFailure:^(id resultFailure) {
-                                      
-                                  }];
-        
-    }
-
-}
-
-
 
 - (void)menuButtonPushed:(id)sender {
     [(UIButton*)sender setEnabled:NO];
