@@ -49,6 +49,8 @@
 		E787B20818DDFF9400CC38CB /* MHDDataMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E787B20218DDFF9400CC38CB /* MHDDataMapper.m */; };
 		E787B20918DDFF9400CC38CB /* MHDPublicInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = E787B20418DDFF9400CC38CB /* MHDPublicInterface.m */; };
 		E787B20B18DE07E000CC38CB /* NewsScreen.html in Resources */ = {isa = PBXBuildFile; fileRef = E787B20A18DE07E000CC38CB /* NewsScreen.html */; };
+		E787B21818DEA46E00CC38CB /* MHDLearningManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E787B21518DEA46E00CC38CB /* MHDLearningManager.m */; };
+		E787B21918DEA46E00CC38CB /* MHDMood.m in Sources */ = {isa = PBXBuildFile; fileRef = E787B21718DEA46E00CC38CB /* MHDMood.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +132,10 @@
 		E787B20318DDFF9400CC38CB /* MHDPublicInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDPublicInterface.h; sourceTree = "<group>"; };
 		E787B20418DDFF9400CC38CB /* MHDPublicInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDPublicInterface.m; sourceTree = "<group>"; };
 		E787B20A18DE07E000CC38CB /* NewsScreen.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = NewsScreen.html; sourceTree = "<group>"; };
+		E787B21418DEA46E00CC38CB /* MHDLearningManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDLearningManager.h; sourceTree = "<group>"; };
+		E787B21518DEA46E00CC38CB /* MHDLearningManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDLearningManager.m; sourceTree = "<group>"; };
+		E787B21618DEA46E00CC38CB /* MHDMood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDMood.h; sourceTree = "<group>"; };
+		E787B21718DEA46E00CC38CB /* MHDMood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDMood.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +199,7 @@
 		28C8593D18DDCFA500C5374B /* Pulso */ = {
 			isa = PBXGroup;
 			children = (
+				E787B21318DEA46E00CC38CB /* Learning */,
 				E787B1F918DDFF9400CC38CB /* DataLoader */,
 				28C859A118DDD50A00C5374B /* TestImages */,
 				28C8599D18DDD4E100C5374B /* NewsCards */,
@@ -336,6 +343,17 @@
 			path = DataTypes;
 			sourceTree = "<group>";
 		};
+		E787B21318DEA46E00CC38CB /* Learning */ = {
+			isa = PBXGroup;
+			children = (
+				E787B21418DEA46E00CC38CB /* MHDLearningManager.h */,
+				E787B21518DEA46E00CC38CB /* MHDLearningManager.m */,
+				E787B21618DEA46E00CC38CB /* MHDMood.h */,
+				E787B21718DEA46E00CC38CB /* MHDMood.m */,
+			);
+			path = Learning;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -446,7 +464,9 @@
 				E787B20918DDFF9400CC38CB /* MHDPublicInterface.m in Sources */,
 				E787B20718DDFF9400CC38CB /* MHDDataLoader.m in Sources */,
 				28C8598F18DDD49300C5374B /* GLObjectDebug.m in Sources */,
+				E787B21818DEA46E00CC38CB /* MHDLearningManager.m in Sources */,
 				28C8598E18DDD49300C5374B /* GLKTextureInfo+setTextureImage.m in Sources */,
+				E787B21918DEA46E00CC38CB /* MHDMood.m in Sources */,
 				28C8598218DDD48700C5374B /* CardLifeCycle.m in Sources */,
 				28C8598518DDD48700C5374B /* CardsObject.m in Sources */,
 				E787B20518DDFF9400CC38CB /* MHDArticle.m in Sources */,
