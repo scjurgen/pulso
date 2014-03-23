@@ -13,6 +13,7 @@
 #import "MHDCardsWorld.h"
 #import "WebNewsEngine.h"
 #import "MHDHtmlFromArticle.h"
+#import "MHDWebRender.h"
 
 #define CLAMPPANX 5.0
 #define CLAMPPANY 3.0
@@ -48,6 +49,7 @@ char *testImages[] = {
     WebNewsEngine *webNewsEngine;
     UIImage *renderedImage;
     MHDRenderArticle *offlineRender;
+    MHDWebRender *webRender;
 }
 
 @property (strong, nonatomic) EAGLContext *context;
@@ -73,12 +75,19 @@ char *testImages[] = {
 {
     CGRect rc = CGRectMake(0,0,320.0,568.0);
 
-    offlineRender = [[MHDRenderArticle alloc] init];
-    [offlineRender renderArticle:rc
-                   withArticleId:@"da17228caa78f321e802f3641d69bed8"
-                        andBlock:^(UIImage *image) {
-                            renderedImage =  image;
-                        }];
+//    offlineRender = [[MHDRenderArticle alloc] init];
+//    [offlineRender renderArticle:rc
+//                   withArticleId:@"da17228caa78f321e802f3641d69bed8"
+//                        andBlock:^(UIImage *image) {
+//                            renderedImage =  image;
+//                        }];
+    webRender = [[MHDWebRender alloc] initWithFrame:rc];
+    [webRender render:nil withTemplate:nil andBlock:^(UIImage *image) {
+        renderedImage =  image;
+    }];
+
+
+
 
     webNewsEngine = [[WebNewsEngine alloc] init];
     [webNewsEngine defineTemplate:@"NewsScreen"];

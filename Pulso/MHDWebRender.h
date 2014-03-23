@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef void(^MHDImageBlock)(UIImage *image);
 
-@interface MHDWebRender : UIWebView
+@interface MHDWebRender : UIWebView <UIWebViewDelegate>
+
+- (id)initWithFrame:(CGRect)frame;
+
+- (void)render:(NSString *)url
+  withTemplate:(NSString *)templateName
+      andBlock:(MHDImageBlock)block;
 
 @end

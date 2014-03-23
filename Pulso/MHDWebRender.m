@@ -7,6 +7,17 @@
 //
 
 #import "MHDWebRender.h"
+#import "WebNewsEngine.h"
+#import "MHDHtmlFromArticle.h"
+
+
+@interface MHDWebRender()
+{
+    WebNewsEngine *webNewsEngine;
+    MHDImageBlock successBlock;
+}
+
+@end
 
 @implementation MHDWebRender
 
@@ -14,10 +25,51 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+
     }
     return self;
 }
 
+
+- (void)render:(NSString *)url
+  withTemplate:(NSString *)templateName
+      andBlock:(MHDImageBlock)block
+{
+    successBlock = block;
+    self.delegate = self;
+    webNewsEngine = [[WebNewsEngine alloc] init];
+    [webNewsEngine defineTemplate:templateName];
+    [webNewsEngine createHtmlUsingBlock:^(MHDArticle *article, NSString *htmlstring)
+     {
+         NSString *str = [NSString stringWithFormat:@"http://www.nerdware.net/hackathon/article.php?id=%@",article[@"identifier"]];
+         NSURL *url = [NSURL URLWithString:str];
+         NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+         [self loadRequest:request];
+
+//         [self loadHTMLString:[MHDHtmlFromArticle getHtmlFromArticle:article
+//                                                         forTemplate:templateName]
+//                      baseURL:nil];
+//         [self webViewDidFinishLoad:self];
+     }];
+}
+
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    CGSize thumbsize = webView.frame.size;
+
+    UIGraphicsBeginImageContext(thumbsize);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGFloat scalingFactor = thumbsize.width/webView.frame.size.width;
+    CGContextScaleCTM(context, scalingFactor,scalingFactor);
+
+    [webView.layer renderInContext: UIGraphicsGetCurrentContext()];
+    UIImage *thumbImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    if (successBlock)
+    {
+        successBlock(thumbImage);
+    }
+}
 
 @end
