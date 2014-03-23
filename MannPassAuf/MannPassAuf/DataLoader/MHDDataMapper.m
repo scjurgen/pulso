@@ -37,16 +37,15 @@
     }
     
     NSDictionary *tempDict = [self data2Dict:data];
-    if (tempDict[@"error"] || !tempDict[@"jsonDict"]) {
+    if (tempDict[@"error"] || !tempDict[@"jsondict"]) {
         return nil;
     }
-    
-    NSDictionary *jsonDict = tempDict[@"jsonDict"];
+    NSDictionary *jsonDict = tempDict[@"jsondict"];
     
     MHDArticleList *articleList = [[MHDArticleList alloc] init];
     
 #warning decide which properties are filled here
-    for (NSString *articleId in jsonDict[@"articleIds"]) {
+    for (NSString *articleId in jsonDict[@"articels"]) {
         
         [articleList.articlesList addObject:articleId];
     }

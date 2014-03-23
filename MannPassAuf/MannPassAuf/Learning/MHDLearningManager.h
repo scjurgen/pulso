@@ -7,19 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MHDPublicInterface.h"
 
-typedef NS_ENUM(int, MHDMoods) {
-    angry = 0,
-    confused,
-    cool,
-    happy,
-    neutral,
-    sad,
-    shocked,
-    smile,
-    tongue,
-    wondering
-};
 
 @interface MHDLearningManager : NSObject
 

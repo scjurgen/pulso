@@ -14,8 +14,16 @@ typedef void(^MHDResultFailureBlock)(id resultFailure);
 
 // ENUMS
 typedef NS_ENUM(int, MHDMoods) {
-    MHDHappy = 0,
-    MHDAngry
+    angry = 0,
+    confused,
+    cool,
+    happy,
+    neutral,
+    sad,
+    shocked,
+    smile,
+    tongue,
+    wondering
 };
 
 @interface MHDPublicInterface : NSObject

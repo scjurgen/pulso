@@ -8,12 +8,17 @@
 
 #import "MHDViewController.h"
 #import <ImageIO/ImageIO.h>
+#import "DataLoader/MHDPublicInterface.h"
+#import "DataLoader/DataTypes/MHDArticleList.h"
+#import "DataLoader/DataTypes/MHDArticle.h"
+
 
 NSString *kCellID = @"SetDetailsViewCellID";
 
 
 @interface MHDViewController ()
 @property(nonatomic, retain)UIView *sideMenu;
+@property(nonatomic, retain)NSMutableArray *articlesArray;
 @end
 
 @implementation MHDViewController
@@ -120,8 +125,78 @@ NSString *kCellID = @"SetDetailsViewCellID";
 }
 
 - (void)moodButtonAction:(id)sender {
+    UIButton *btn = sender;
+    
+    MHDMoods moods;
+    switch (btn.tag) {
+        case 1:
+            moods = 0;
+            break;
+        case 2:
+            moods = 1;
+            break;
+        case 3:
+            moods = 2;
+            break;
+        case 4:
+            moods = 3;
+            break;
+        case 5:
+            moods = 4;
+            break;
+        case 6:
+            moods = 5;
+            break;
+        case 7:
+            moods = 6;
+            break;
+        case 8:
+            moods = 7;
+            break;
+        case 9:
+            moods = 8;
+            break;
+        case 10:
+            moods = 9;
+            break;
+        default:
+            break;
+    }
+    
+    
+    
+    [MHDPublicInterface getArticlesForMood:moods
+                                 onSuccess:^(id resultSuccess) {
+                                     [self processResultForList:(MHDArticleList *)resultSuccess];
+                                 }
+                                 onFailure:^(id resultFailure) {
+                                     
+                                 }];
+    
+    
+    
     
 }
+
+- (void)processResultForList:(MHDArticleList *)list {
+    _articlesArray = [[NSMutableArray alloc] init];
+    for (NSString *articleId in list.articlesList) {
+        
+        [MHDPublicInterface getArticleForId:articleId
+                                  onSuccess:^(id resultSuccess) {
+                                      MHDArticle *article = (MHDArticle *)resultSuccess;
+                                      
+                                      [_articlesArray addObject:article];
+                                  }
+                                  onFailure:^(id resultFailure) {
+                                      
+                                  }];
+        
+    }
+
+}
+
+
 
 - (void)menuButtonPushed:(id)sender {
     [(UIButton*)sender setEnabled:NO];

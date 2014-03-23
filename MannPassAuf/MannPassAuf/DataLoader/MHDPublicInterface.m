@@ -19,7 +19,7 @@
     
     MHDDataLoader *loader = [[MHDDataLoader alloc] init];
     
-    NSString *url = @"";
+    NSString *url = [NSString stringWithFormat:@"http://www.nerdware.net/hackathon/mood.php?mood=%@", [self getNameForEnum:mood]];
     
     [loader loadObjectFromURL:url
                withHTTPMethod:GET
@@ -61,6 +61,36 @@
                        }
                        
                    }];
+    
+}
+
+
++ (NSString *)getNameForEnum:(MHDMoods)mood {
+    
+    switch (mood) {
+        case 0:
+            return @"angry";
+        case 1:
+            return @"confused";
+        case 2:
+            return @"cool";
+        case 3:
+            return @"happy";
+        case 4:
+            return @"neutral";
+        case 5:
+            return @"sad";
+        case 6:
+            return @"shocked";
+        case 7:
+            return @"smiley";
+        case 8:
+            return @"tongue";
+        case 9:
+            return @"wondering";
+        default:
+            break;
+    }
     
 }
 
