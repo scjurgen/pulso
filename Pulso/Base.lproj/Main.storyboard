@@ -9,11 +9,11 @@
             <objects>
                 <glkViewController preferredFramesPerSecond="30" id="BV1-FR-VrT" customClass="MHDViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dWe-On-idd"/>
-                        <viewControllerLayoutGuide type="bottom" id="nZC-s9-Y68"/>
+                        <viewControllerLayoutGuide type="top" id="ofo-xV-7JN"/>
+                        <viewControllerLayoutGuide type="bottom" id="rkV-uw-gZY"/>
                     </layoutGuides>
                     <glkView key="view" contentMode="scaleToFill" id="3se-qz-xqx">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView autoresizesSubviews="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TG1-W7-kcA">
@@ -22,30 +22,17 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
                             </webView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottom-bar.png" translatesAutoresizingMaskIntoConstraints="NO" id="Thx-1T-1Nd">
-                                <rect key="frame" x="0.0" y="924" width="768" height="100"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bottom-bar.png" translatesAutoresizingMaskIntoConstraints="NO" id="Thx-1T-1Nd">
+                                <rect key="frame" x="0.0" y="668" width="1024" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="wiy-cG-I0T"/>
-                                </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" alpha="0.64999999999999969" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bottombar.png" translatesAutoresizingMaskIntoConstraints="NO" id="cdE-nZ-guG">
-                                <rect key="frame" x="0.0" y="829" width="768" height="95"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.74999999999999978" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bottombar.png" translatesAutoresizingMaskIntoConstraints="NO" id="cdE-nZ-guG">
+                                <rect key="frame" x="0.0" y="573" width="1024" height="95"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="6dd-Ac-kdA"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="95" id="hTq-iy-CjJ"/>
-                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfO-jl-Pur">
-                                <rect key="frame" x="35" y="942" width="67" height="67"/>
+                            <button opaque="NO" alpha="0.34999999999999964" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfO-jl-Pur">
+                                <rect key="frame" x="20" y="684" width="67" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="87" id="A4t-h4-ic7"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="87" id="Ax4-cI-P5i"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="cfT-dB-IUH"/>
-                                    <constraint firstAttribute="height" constant="30" id="pxY-hN-pex"/>
-                                </constraints>
                                 <state key="normal" image="list2.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -53,15 +40,9 @@
                                     <action selector="closeWebView:" destination="BV1-FR-VrT" eventType="touchUpInside" id="NhM-jF-3QH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqI-5O-cUD">
-                                <rect key="frame" x="685" y="947" width="54" height="54"/>
+                            <button opaque="NO" alpha="0.34999999999999964" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqI-5O-cUD">
+                                <rect key="frame" x="937" y="684" width="67" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="3bH-GK-XVp"/>
-                                    <constraint firstAttribute="width" constant="87" id="4lX-yJ-Wn6"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="87" id="GtV-jh-gqD"/>
-                                    <constraint firstAttribute="height" constant="30" id="eJS-hj-3mL"/>
-                                </constraints>
                                 <state key="normal" image="smiley.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -69,21 +50,111 @@
                                     <action selector="moodAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="DOp-B9-w4s"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" alpha="0.34999999403953552" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zfe-t9-WX3">
+                                <rect key="frame" x="19" y="586" width="67" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="sad.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeWebView:" destination="BV1-FR-VrT" eventType="touchUpInside" id="OCz-aP-aRL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.34999999403953552" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="coF-1G-ZpR">
+                                <rect key="frame" x="121" y="586" width="67" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="shocked.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeWebView:" destination="BV1-FR-VrT" eventType="touchUpInside" id="y8R-J0-Qfd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.34999999403953552" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VEm-ne-ShT">
+                                <rect key="frame" x="223" y="586" width="67" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="smiley.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeWebView:" destination="BV1-FR-VrT" eventType="touchUpInside" id="yQy-gC-cOr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.34999999403953552" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OGX-sV-b9i">
+                                <rect key="frame" x="325" y="586" width="67" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="tongue.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeWebView:" destination="BV1-FR-VrT" eventType="touchUpInside" id="8CV-M0-6Jj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.34999999403953552" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZQ-9W-zI4">
+                                <rect key="frame" x="427" y="586" width="67" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="wondering.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeWebView:" destination="BV1-FR-VrT" eventType="touchUpInside" id="fQX-WF-QEP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.34999999403953552" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qpn-fi-kt5">
+                                <rect key="frame" x="529" y="586" width="67" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="angry.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeWebView:" destination="BV1-FR-VrT" eventType="touchUpInside" id="amS-Q2-tm0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.34999999403953552" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opE-kq-QFz">
+                                <rect key="frame" x="631" y="586" width="67" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="confused.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeWebView:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Uf8-uM-8MU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.34999999403953552" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYO-i8-Ufk">
+                                <rect key="frame" x="733" y="586" width="67" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="cool.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeWebView:" destination="BV1-FR-VrT" eventType="touchUpInside" id="ZLm-hv-47s"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.34999999403953552" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nbf-aJ-mvk">
+                                <rect key="frame" x="835" y="586" width="67" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="happy.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeWebView:" destination="BV1-FR-VrT" eventType="touchUpInside" id="ose-tf-yLb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.34999999403953552" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KzT-ge-FNj">
+                                <rect key="frame" x="937" y="586" width="67" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="neutral.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeWebView:" destination="BV1-FR-VrT" eventType="touchUpInside" id="XGq-OB-XtF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="nZC-s9-Y68" firstAttribute="top" secondItem="Thx-1T-1Nd" secondAttribute="bottom" id="5c8-tu-ej1"/>
-                            <constraint firstItem="UqI-5O-cUD" firstAttribute="baseline" secondItem="pfO-jl-Pur" secondAttribute="baseline" id="7er-hJ-Oyx"/>
-                            <constraint firstAttribute="trailing" secondItem="UqI-5O-cUD" secondAttribute="trailing" constant="20" symbolic="YES" id="C2l-SP-kyK"/>
-                            <constraint firstItem="Thx-1T-1Nd" firstAttribute="top" secondItem="cdE-nZ-guG" secondAttribute="bottom" id="L0m-uz-dVL"/>
-                            <constraint firstItem="nZC-s9-Y68" firstAttribute="top" secondItem="pfO-jl-Pur" secondAttribute="bottom" constant="35" id="MbG-IO-N7O"/>
-                            <constraint firstAttribute="trailing" secondItem="cdE-nZ-guG" secondAttribute="trailing" id="Q8c-kw-dWB"/>
-                            <constraint firstItem="cdE-nZ-guG" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" id="Tqq-WT-TD1"/>
-                            <constraint firstAttribute="trailing" secondItem="Thx-1T-1Nd" secondAttribute="trailing" id="UfL-jV-9ne"/>
-                            <constraint firstItem="Thx-1T-1Nd" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" id="kL6-P0-XtD"/>
-                            <constraint firstItem="pfO-jl-Pur" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="10" id="qc9-uP-UHi"/>
-                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </glkView>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="contentWebView" destination="TG1-W7-kcA" id="Rax-bL-5SG"/>
                     </connections>
@@ -93,10 +164,19 @@
         </scene>
     </scenes>
     <resources>
+        <image name="angry.png" width="114" height="114"/>
         <image name="bottom-bar.png" width="1024" height="100"/>
         <image name="bottombar.png" width="1024" height="100"/>
+        <image name="confused.png" width="114" height="114"/>
+        <image name="cool.png" width="114" height="114"/>
+        <image name="happy.png" width="114" height="114"/>
         <image name="list2.png" width="114" height="114"/>
+        <image name="neutral.png" width="114" height="114"/>
+        <image name="sad.png" width="114" height="114"/>
+        <image name="shocked.png" width="114" height="114"/>
         <image name="smiley.png" width="114" height="114"/>
+        <image name="tongue.png" width="114" height="114"/>
+        <image name="wondering.png" width="114" height="114"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>

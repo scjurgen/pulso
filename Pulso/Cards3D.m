@@ -322,7 +322,7 @@
                 CGFloat h = height;
 
                 [self setCenterRectangle:gRectVertexData cardNr:index w:width h:h];
-                [self translateRect:gRectVertexData cardNr:index x:xp y:yp z:-z*2.0];
+                [self translateRect:gRectVertexData cardNr:index x:xp y:yp z:-z*2.0 + (rand() % 32767)/50000.0];
             }
         }
     }

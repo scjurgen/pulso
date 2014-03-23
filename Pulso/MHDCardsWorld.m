@@ -47,7 +47,7 @@
     if (self)
     {
         CGRect rc = CGRectMake(0,0,100.0,100.0);
-        [[TiltSensor handler] setMotionHandler:rc];
+//        [[TiltSensor handler] setMotionHandler:rc];
     }
     return self;
 }
