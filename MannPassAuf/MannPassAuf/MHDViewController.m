@@ -11,6 +11,8 @@
 #import "DataLoader/MHDPublicInterface.h"
 #import "DataLoader/DataTypes/MHDArticleList.h"
 #import "DataLoader/DataTypes/MHDArticle.h"
+#import "Learning/MHDLearningManager.h"
+#import "Learning/MHDMood.h"
 
 NSString *kCellID = @"SetDetailsViewCellID";
 
@@ -45,12 +47,28 @@ NSString *kCellID = @"SetDetailsViewCellID";
 
     UIButton *menuButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 30, 100, 40)];
     [menuButton addTarget:self action:@selector(menuButtonPushed:) forControlEvents:UIControlEventTouchUpInside];
-    [menuButton setTitle:@"💉" forState:UIControlStateNormal];
+    [menuButton setTitle:@"I feel..." forState:UIControlStateNormal];
     menuButton.enabled = YES;
     [self.view addSubview:menuButton];
     
     [self setupSideMenu];
+    [self loadInitial];
 }
+
+- (void)loadInitial {
+    
+    MHDLearningManager *manager = [[MHDLearningManager alloc] init];
+    
+    NSArray *arr = [manager getRankingOfMoods];
+    MHDMood *mood = arr[0];
+    MHDMoods moods = [manager getMoodForName:mood.mood];
+    
+    UIButton *tempBtn = [[UIButton alloc] init];
+    tempBtn.tag = (NSInteger)moods + 1;
+    [self moodButtonAction:tempBtn];
+    
+}
+
 
 - (void)setupSideMenu {
     CGFloat advanceY = 44.0;
@@ -273,10 +291,7 @@ NSString *kCellID = @"SetDetailsViewCellID";
     SetDetailsViewCell *cell = [_newsCollectionView dequeueReusableCellWithReuseIdentifier:kCellID forIndexPath:indexPath];
 
     MHDArticle *article = [_articlesArray objectAtIndex:indexPath.row];
-    
-    
-    
-    
+
     NSArray *mediaArr;
     NSDictionary *medias;
     NSArray *pictureArr;

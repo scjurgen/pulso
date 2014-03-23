@@ -16,4 +16,5 @@
 
 - (NSArray *)getRankingOfMoods;
 
+- (MHDMoods)getMoodForName:(NSString *)mood;
 @end

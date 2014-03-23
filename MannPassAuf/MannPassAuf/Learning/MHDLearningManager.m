@@ -99,6 +99,21 @@ static MHDLearningManager *sharedManager;
     }
 }
 
+- (MHDMoods)getMoodForName:(NSString *)mood {
+    
+    if ([mood isEqualToString:@"angry"]) return angry;
+    if ([mood isEqualToString:@"confused"]) return confused;
+    if ([mood isEqualToString:@"cool"]) return cool;
+    if ([mood isEqualToString:@"happy"]) return happy;
+    if ([mood isEqualToString:@"neutral"]) return neutral;
+    if ([mood isEqualToString:@"sad"]) return sad;
+    if ([mood isEqualToString:@"shocked"]) return shocked;
+    if ([mood isEqualToString:@"smile"]) return smile;
+    if ([mood isEqualToString:@"tongue"]) return tongue;
+    else return wondering;
+
+}
+
 - (NSArray *)getRankingOfMoods {
     NSMutableArray *tempArray = [[NSMutableArray alloc] init];
     
