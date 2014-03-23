@@ -86,7 +86,7 @@
     self.effect.fog.mode = GLKFogModeLinear;
     self.effect.fog.color = mainColor;
     self.effect.fog.start = -1.0;
-    self.effect.fog.end =  20.0;
+    self.effect.fog.end =  7.9;
 
     self.effect.texture2d0.envMode = GLKTextureEnvModeReplace;
     self.effect.texture2d0.target = GLKTextureTarget2D;

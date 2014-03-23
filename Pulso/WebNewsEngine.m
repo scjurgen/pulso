@@ -158,8 +158,7 @@ char *randId[]=
                               onSuccess:^(id resultSuccess) {
                                   MHDArticle *article = (MHDArticle *)resultSuccess;
                                   _contentString = article[@"content"];
-                                  
-                                  NSLog(@"%@", (MHDArticle *)resultSuccess);
+                                  // NSLog(@"%@", (MHDArticle *)resultSuccess);
                                   
                                   result(article, _htmlTemplate);
                               }

@@ -82,7 +82,7 @@ char *testImages[] = {
     [webRender render:nil andBlock:^(UIImage *image) {
         dispatch_async(dispatch_get_main_queue(), ^{
             int column = currentArticle%12;
-            int row = currentArticle/7;
+            int row = currentArticle/12;
             if (row < 7)
             {
                 [self.cardsWorld.textureAtlas updateTexture:column row:row image:image];
@@ -94,35 +94,8 @@ char *testImages[] = {
     }];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [[_captureSession captureSession] startRunning];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [[_captureSession captureSession] stopRunning];
-}
-
-- (void)initAntiBumpYourHeadMode
-{
-UIView *v = [self view];
-_captureSession = [[CaptureSession alloc] init];
-_captureSession.delegate = self;
-
-[_captureSession addVideoInput];
-[_captureSession addVideoPreviewLayer];
-
-CGRect layerRect = v.layer.bounds;
-[_captureSession.previewLayer setBounds:layerRect];
-[_captureSession.previewLayer setPosition:CGPointMake(CGRectGetMidX(layerRect),
-                                                      CGRectGetMidY(layerRect))];
-[v.layer insertSublayer:_captureSession.previewLayer atIndex:0];
-}
-
 - (void)viewDidLoad
 {
-    [self initAntiBumpYourHeadMode];
     articleLoadedCount = 0;
     [self loadMoreCards];
 
@@ -136,6 +109,7 @@ CGRect layerRect = v.layer.bounds;
     //        NSLog(@"Empty... sigh");
     //    }];
 
+    _rotationY=0.2;
     _maxZoom = 10.0;
     _minZoom = 0.5;
     _currentZoom = _lastZoom = 10.0;
@@ -311,15 +285,15 @@ CGRect layerRect = v.layer.bounds;
                 originalOpenRect.size.height = pt2.y-pt1.y;
 
                 self.contentWebView.frame = originalOpenRect;
-                self.contentWebView.alpha = 0.0;
+                self.contentWebView.alpha = 0.4;
                 self.overShootTargetRect = CGRectInset(self.targetRect,-20,-20);
                 [UIView animateWithDuration:0.2 animations:^{
                     self.contentWebView.frame = self.overShootTargetRect;
-                    self.contentWebView.alpha = 0.9;
+                    self.contentWebView.alpha = 0.98;
                 } completion:^(BOOL finished) {
                     [UIView animateWithDuration:0.2 animations:^{
                         self.contentWebView.frame = CGRectInset(self.overShootTargetRect, 5,5);
-                        self.contentWebView.alpha = 0.9;
+                        self.contentWebView.alpha = 0.98;
 
                     }];
                 }];

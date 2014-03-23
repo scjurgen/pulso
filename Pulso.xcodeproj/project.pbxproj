@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		286704EF18DDFB17000619EC /* glitch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 286704EE18DDFB17000619EC /* glitch.jpg */; };
 		28AE8FCD18DE26B70064AA59 /* bottom-bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 28AE8FCC18DE26B70064AA59 /* bottom-bar.png */; };
 		28AE8FD118DE3F4B0064AA59 /* MHDCardLife.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AE8FD018DE3F4B0064AA59 /* MHDCardLife.m */; };
 		28AE901A18DE68990064AA59 /* MHDRenderArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AE901918DE68990064AA59 /* MHDRenderArticle.m */; };
@@ -15,7 +14,6 @@
 		28AE901F18DE75550064AA59 /* MHDHtmlFromArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AE901E18DE75550064AA59 /* MHDHtmlFromArticle.m */; };
 		28AE902218DE939A0064AA59 /* MHDWebRender.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AE902118DE939A0064AA59 /* MHDWebRender.m */; };
 		28AE902418DEACCA0064AA59 /* bottombar.png in Resources */ = {isa = PBXBuildFile; fileRef = 28AE902318DEACCA0064AA59 /* bottombar.png */; };
-		28AE902718DEAEF60064AA59 /* CaptureSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AE902618DEAEF60064AA59 /* CaptureSession.m */; };
 		28C8593418DDCFA500C5374B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C8593318DDCFA500C5374B /* Foundation.framework */; };
 		28C8593618DDCFA500C5374B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C8593518DDCFA500C5374B /* CoreGraphics.framework */; };
 		28C8593818DDCFA500C5374B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C8593718DDCFA500C5374B /* UIKit.framework */; };
@@ -70,7 +68,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		286704EE18DDFB17000619EC /* glitch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = glitch.jpg; sourceTree = "<group>"; };
 		28AE8FCC18DE26B70064AA59 /* bottom-bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom-bar.png"; sourceTree = "<group>"; };
 		28AE8FCE18DE32880064AA59 /* geometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = geometry.h; sourceTree = "<group>"; };
 		28AE8FCF18DE3F4B0064AA59 /* MHDCardLife.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDCardLife.h; sourceTree = "<group>"; };
@@ -83,8 +80,6 @@
 		28AE902018DE939A0064AA59 /* MHDWebRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDWebRender.h; sourceTree = "<group>"; };
 		28AE902118DE939A0064AA59 /* MHDWebRender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDWebRender.m; sourceTree = "<group>"; };
 		28AE902318DEACCA0064AA59 /* bottombar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottombar.png; sourceTree = "<group>"; };
-		28AE902518DEAEF60064AA59 /* CaptureSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureSession.h; sourceTree = "<group>"; };
-		28AE902618DEAEF60064AA59 /* CaptureSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureSession.m; sourceTree = "<group>"; };
 		28C8593018DDCFA500C5374B /* Pulso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pulso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C8593318DDCFA500C5374B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		28C8593518DDCFA500C5374B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -273,7 +268,6 @@
 				28AE902318DEACCA0064AA59 /* bottombar.png */,
 				28AE901B18DE74080064AA59 /* NewsMainScreen.html */,
 				28AE8FCC18DE26B70064AA59 /* bottom-bar.png */,
-				286704EE18DDFB17000619EC /* glitch.jpg */,
 				E787B20A18DE07E000CC38CB /* NewsScreen.html */,
 				28C8597418DDD3FB00C5374B /* black.png */,
 				28C8597218DDD3EF00C5374B /* ESO_-_Milky_Way.jpg */,
@@ -325,8 +319,6 @@
 		28C8599C18DDD4C500C5374B /* Gimmicks */ = {
 			isa = PBXGroup;
 			children = (
-				28AE902518DEAEF60064AA59 /* CaptureSession.h */,
-				28AE902618DEAEF60064AA59 /* CaptureSession.m */,
 				28C8599618DDD4B900C5374B /* TiltSensor.h */,
 				28C8599718DDD4B900C5374B /* TiltSensor.m */,
 			);
@@ -466,7 +458,6 @@
 				28AE902418DEACCA0064AA59 /* bottombar.png in Resources */,
 				E787B20B18DE07E000CC38CB /* NewsScreen.html in Resources */,
 				28C8594218DDCFA500C5374B /* InfoPlist.strings in Resources */,
-				286704EF18DDFB17000619EC /* glitch.jpg in Resources */,
 				28C8597318DDD3EF00C5374B /* ESO_-_Milky_Way.jpg in Resources */,
 				28C8594B18DDCFA500C5374B /* Main.storyboard in Resources */,
 				28AE8FCD18DE26B70064AA59 /* bottom-bar.png in Resources */,
@@ -514,7 +505,6 @@
 				E787B20818DDFF9400CC38CB /* MHDDataMapper.m in Sources */,
 				28AE8FD118DE3F4B0064AA59 /* MHDCardLife.m in Sources */,
 				28AE901F18DE75550064AA59 /* MHDHtmlFromArticle.m in Sources */,
-				28AE902718DEAEF60064AA59 /* CaptureSession.m in Sources */,
 				28C8594418DDCFA500C5374B /* main.m in Sources */,
 				28C8598D18DDD49300C5374B /* GLDrawLine.m in Sources */,
 				28C8598318DDD48700C5374B /* Cards3D.m in Sources */,
