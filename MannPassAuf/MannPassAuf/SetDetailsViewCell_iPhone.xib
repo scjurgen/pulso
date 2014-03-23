@@ -14,25 +14,25 @@
                 <rect key="frame" x="0.0" y="0.0" width="310" height="450"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="51" userLabel="LabelTitel">
-                        <rect key="frame" x="20" y="238" width="270" height="30"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="2014-03-23 10:52:10.786 MannPassAuf[884:60b] the item height must be less that the height of t" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="293" translatesAutoresizingMaskIntoConstraints="NO" id="51" userLabel="LabelTitel">
+                        <rect key="frame" x="9" y="150" width="293" height="67"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="aqA-sg-dNF"/>
+                            <constraint firstAttribute="height" constant="67" id="aqA-sg-dNF"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D9F-Af-t16">
-                        <rect key="frame" x="20" y="20" width="270" height="210"/>
+                        <rect key="frame" x="0.0" y="3" width="310" height="142"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceM-mF-Kdf">
-                        <rect key="frame" x="20" y="276" width="270" height="154"/>
+                        <rect key="frame" x="20" y="225" width="270" height="210"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="154" id="xUa-OF-cEC"/>
+                            <constraint firstAttribute="height" constant="210" id="xUa-OF-cEC"/>
                         </constraints>
                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -44,16 +44,16 @@
             </view>
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="51" secondAttribute="trailing" constant="20" id="5A5-g6-4ho"/>
-                <constraint firstItem="51" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="20" id="BYz-tX-Zz7"/>
-                <constraint firstItem="D9F-Af-t16" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="20" id="Hqa-zd-EsH"/>
-                <constraint firstItem="51" firstAttribute="top" secondItem="D9F-Af-t16" secondAttribute="bottom" constant="8" id="IqB-EN-ZHb"/>
+                <constraint firstAttribute="trailing" secondItem="51" secondAttribute="trailing" constant="8" id="5A5-g6-4ho"/>
+                <constraint firstItem="51" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="9" id="BYz-tX-Zz7"/>
+                <constraint firstItem="D9F-Af-t16" firstAttribute="leading" secondItem="2" secondAttribute="leading" id="Hqa-zd-EsH"/>
+                <constraint firstItem="51" firstAttribute="top" secondItem="D9F-Af-t16" secondAttribute="bottom" constant="5" id="IqB-EN-ZHb"/>
                 <constraint firstItem="ceM-mF-Kdf" firstAttribute="top" secondItem="51" secondAttribute="bottom" constant="8" id="LxF-Hk-mt7"/>
-                <constraint firstAttribute="bottom" secondItem="ceM-mF-Kdf" secondAttribute="bottom" constant="20" id="Uoz-56-tLQ"/>
-                <constraint firstAttribute="trailing" secondItem="D9F-Af-t16" secondAttribute="trailing" constant="20" id="W58-Jz-Plx"/>
+                <constraint firstAttribute="bottom" secondItem="ceM-mF-Kdf" secondAttribute="bottom" constant="15" id="Uoz-56-tLQ"/>
+                <constraint firstAttribute="trailing" secondItem="D9F-Af-t16" secondAttribute="trailing" id="W58-Jz-Plx"/>
                 <constraint firstAttribute="trailing" secondItem="ceM-mF-Kdf" secondAttribute="trailing" constant="20" id="Wud-MH-I48"/>
                 <constraint firstItem="ceM-mF-Kdf" firstAttribute="top" secondItem="51" secondAttribute="bottom" constant="8" id="cQS-pB-fT9"/>
-                <constraint firstItem="D9F-Af-t16" firstAttribute="top" secondItem="2" secondAttribute="top" constant="20" id="jCg-ie-OLe"/>
+                <constraint firstItem="D9F-Af-t16" firstAttribute="top" secondItem="2" secondAttribute="top" constant="3" id="jCg-ie-OLe"/>
                 <constraint firstItem="ceM-mF-Kdf" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="20" id="u8O-6l-xD8"/>
             </constraints>
             <size key="customSize" width="264" height="445"/>
