@@ -8,6 +8,7 @@
 
 #import "MHDRenderWebView.h"
 #import "WebNewsEngine.h"
+#import "MHDHtmlFromArticle.h"
 
 @interface MHDRenderWebView()
 {
@@ -29,26 +30,26 @@
 }
 
 
-
 - (void)render:(NSString *)url
   withTemplate:(NSString *)templateName
      andBlock:(MHDImageBlock)block
 {
     successBlock = block;
+    self.delegate = self;
     webNewsEngine = [[WebNewsEngine alloc] init];
     [webNewsEngine defineTemplate:templateName];
-
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL: [NSURL URLWithString:url]
-                                                  cachePolicy: NSURLRequestUseProtocolCachePolicy
-                                              timeoutInterval: 5.0];
-    self.delegate = self;
-    [self loadRequest:request];
+    [webNewsEngine createHtmlUsingBlock:^(MHDArticle *article, NSString *htmlstring)
+    {
+        [self loadHTMLString:[MHDHtmlFromArticle getHtmlFromArticle:article
+                                                        forTemplate:templateName]
+                     baseURL:nil];
+        [self webViewDidFinishLoad:self];
+    }];
 }
 
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-
     CGSize thumbsize = webView.frame.size;
 
     UIGraphicsBeginImageContext(thumbsize);

@@ -48,9 +48,12 @@
     return [NSString stringWithFormat:@"file:/%@", resourcePath];
 }
 
--(void)createHtmlUsingBlock:(MHDHTMLContentBlock)result {
-    if (_htmlTemplate==nil) result(nil, nil);
-    
+-(void)createHtmlUsingBlock:(MHDHTMLContentBlock)result
+{
+    if (_htmlTemplate==nil)
+    {
+        result(nil, nil);
+    }
     [self loadContentUsingBlock:^(MHDArticle *article, NSString *htmltemplate) {
         
         result(article, _htmlTemplate);

@@ -12,6 +12,7 @@
 #import <OpenGLES/EAGL.h>
 #import "MHDCardsWorld.h"
 #import "WebNewsEngine.h"
+#import "MHDHtmlFromArticle.h"
 
 #define CLAMPPANX 5.0
 #define CLAMPPANY 3.0
@@ -46,12 +47,13 @@ char *testImages[] = {
     CGRect originalOpenRect;
 
     WebNewsEngine *webNewsEngine;
+    UIImage *renderedImage;
 }
 
 @property (strong, nonatomic) EAGLContext *context;
 @property (strong, nonatomic) MHDCardsWorld *cardsWorld;
-@property(nonatomic, assign)CGRect overShootTargetRect;
-@property(nonatomic, assign)CGRect targetRect;
+@property(nonatomic, assign) CGRect overShootTargetRect;
+@property(nonatomic, assign) CGRect targetRect;
 @end
 
 @implementation MHDViewController
@@ -72,10 +74,12 @@ char *testImages[] = {
     CGRect rc = CGRectMake(0,0,320.0,568.0);
 
     MHDRenderWebView *webRender = [[MHDRenderWebView alloc] initWithFrame:rc];
-    [webRender render:nil withTemplate:@"MainWebTemplate" andBlock:^(UIImage *image) {
-        // saving image
-
+    [webRender render:nil withTemplate:@"NewsMainScreen" andBlock:^(UIImage *image) {
+        renderedImage =  image;
+        
     }];
+
+    
     webNewsEngine = [[WebNewsEngine alloc] init];
     [webNewsEngine defineTemplate:@"NewsScreen"];
 
@@ -120,7 +124,7 @@ char *testImages[] = {
     
     // Insert BLock method!
     [webNewsEngine createHtmlUsingBlock:^(MHDArticle *article, NSString *template) {
-        [_contentWebView loadHTMLString:[self getHtmlFromArticle:article forTemplate:template] baseURL:nil];
+        [_contentWebView loadHTMLString:[MHDHtmlFromArticle getHtmlFromArticle:article forTemplate:template] baseURL:nil];
     }];
 }
 
@@ -329,8 +333,9 @@ char *testImages[] = {
     if (i==15)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSString *name = [NSString stringWithFormat:@"TestImages/%s",testImages[rand()%(sizeof(testImages)/sizeof(char*))]];
-            UIImage *image =  [UIImage imageNamed:name];
+//            NSString *name = [NSString stringWithFormat:@"TestImages/%s",testImages[rand()%(sizeof(testImages)/sizeof(char*))]];
+//            UIImage *image =  [UIImage imageNamed:name];
+            UIImage *image =  renderedImage;
             [self.cardsWorld.textureAtlas updateTexture:rand()%12 row:rand()%7  image:image ];
         });
         i = 0;
