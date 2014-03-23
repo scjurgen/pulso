@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" media="screen" href="http://openfontlibrary.org/face/gentium" rel="stylesheet" type="text/css"/>
+        <style type="text/css">
+            
+            body {font-family: 'Open Sans', sans-serif; }
+            #newstext {
+                font-family: 'Gentium Book Basic';
+                font-style: normal;
+                font-size: 14px;
+                float: right;
+                width: 550px;
+                color:#666666;
+            }
+        
+            #topicname {
+                float:right;
+                width:100px;
+                height:20px;
+                margin-right:20px;
+                margin-top:10px;
+                border-width:1px;
+                border-style:solid;
+                color:#666666;
+            
+            }
+        
+            #newstitle {
+                float:left;
+                margin-left:20px;
+                width:380px;
+                height:440px;
+                font-size: 24px;
+                font: 'Open Sans Bold';
+                color:#666666;
+            }
+        
+        </style>
+        var $pictureWidth = body.width;
+        </script>
+    </head>
+    <body>
+        Hollow world!!</br>
+        Hollow wood!</br>
+        Hollow world!!</br>
+        Hollow wood!</br>
+        <div style="width:pictureWidth; height:330px; overflow:hidden; float:left">
+            <img id="titlePic" src="{pictureUrl}" style="max-width:pictureWidth; height=330px; alt="image event"; float:left"/><br/>
+        </div>
+        
+        <div id="newstext">
+            {article}
+        </div>
+        
+        <div id="topicname"><center>{topicName}</center></div>
+        
+        <h1 id="newstitle">{headerTitle}</h1>
+        
+        
+    </body>
+</html>
