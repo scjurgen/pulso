@@ -25,6 +25,14 @@
 		28AE900A18DE46640064AA59 /* MannPassAufTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AE900918DE46640064AA59 /* MannPassAufTests.m */; };
 		28AE901518DE48310064AA59 /* CaptureSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AE901418DE48310064AA59 /* CaptureSession.m */; };
 		28AE901718DE4C100064AA59 /* test1.png in Resources */ = {isa = PBXBuildFile; fileRef = 28AE901618DE4C100064AA59 /* test1.png */; };
+		E787B24818DEC3AB00CC38CB /* MHDLearningManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E787B23718DEC3AB00CC38CB /* MHDLearningManager.m */; };
+		E787B24918DEC3AB00CC38CB /* MHDMood.m in Sources */ = {isa = PBXBuildFile; fileRef = E787B23918DEC3AB00CC38CB /* MHDMood.m */; };
+		E787B24A18DEC3AB00CC38CB /* MHDArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = E787B23D18DEC3AB00CC38CB /* MHDArticle.m */; };
+		E787B24B18DEC3AB00CC38CB /* MHDArticleList.m in Sources */ = {isa = PBXBuildFile; fileRef = E787B23F18DEC3AB00CC38CB /* MHDArticleList.m */; };
+		E787B24C18DEC3AB00CC38CB /* MHDDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = E787B24118DEC3AB00CC38CB /* MHDDataLoader.m */; };
+		E787B24D18DEC3AB00CC38CB /* MHDDataMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E787B24318DEC3AB00CC38CB /* MHDDataMapper.m */; };
+		E787B24E18DEC3AB00CC38CB /* MHDHtmlFromArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = E787B24518DEC3AB00CC38CB /* MHDHtmlFromArticle.m */; };
+		E787B24F18DEC3AB00CC38CB /* MHDPublicInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = E787B24718DEC3AB00CC38CB /* MHDPublicInterface.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +71,22 @@
 		28AE901318DE48310064AA59 /* CaptureSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureSession.h; sourceTree = "<group>"; };
 		28AE901418DE48310064AA59 /* CaptureSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureSession.m; sourceTree = "<group>"; };
 		28AE901618DE4C100064AA59 /* test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test1.png; sourceTree = "<group>"; };
+		E787B23618DEC3AB00CC38CB /* MHDLearningManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDLearningManager.h; sourceTree = "<group>"; };
+		E787B23718DEC3AB00CC38CB /* MHDLearningManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDLearningManager.m; sourceTree = "<group>"; };
+		E787B23818DEC3AB00CC38CB /* MHDMood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDMood.h; sourceTree = "<group>"; };
+		E787B23918DEC3AB00CC38CB /* MHDMood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDMood.m; sourceTree = "<group>"; };
+		E787B23C18DEC3AB00CC38CB /* MHDArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDArticle.h; sourceTree = "<group>"; };
+		E787B23D18DEC3AB00CC38CB /* MHDArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDArticle.m; sourceTree = "<group>"; };
+		E787B23E18DEC3AB00CC38CB /* MHDArticleList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDArticleList.h; sourceTree = "<group>"; };
+		E787B23F18DEC3AB00CC38CB /* MHDArticleList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDArticleList.m; sourceTree = "<group>"; };
+		E787B24018DEC3AB00CC38CB /* MHDDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDDataLoader.h; sourceTree = "<group>"; };
+		E787B24118DEC3AB00CC38CB /* MHDDataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDDataLoader.m; sourceTree = "<group>"; };
+		E787B24218DEC3AB00CC38CB /* MHDDataMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDDataMapper.h; sourceTree = "<group>"; };
+		E787B24318DEC3AB00CC38CB /* MHDDataMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDDataMapper.m; sourceTree = "<group>"; };
+		E787B24418DEC3AB00CC38CB /* MHDHtmlFromArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDHtmlFromArticle.h; sourceTree = "<group>"; };
+		E787B24518DEC3AB00CC38CB /* MHDHtmlFromArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDHtmlFromArticle.m; sourceTree = "<group>"; };
+		E787B24618DEC3AB00CC38CB /* MHDPublicInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDPublicInterface.h; sourceTree = "<group>"; };
+		E787B24718DEC3AB00CC38CB /* MHDPublicInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDPublicInterface.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +146,8 @@
 		28AE8FE418DE46640064AA59 /* MannPassAuf */ = {
 			isa = PBXGroup;
 			children = (
+				E787B23518DEC3AB00CC38CB /* Learning */,
+				E787B23A18DEC3AB00CC38CB /* DataLoader */,
 				28AA6A1618DEBD1F00323A6F /* SetDetailsViewCell_iPhone.xib */,
 				28AA6A1718DEBD1F00323A6F /* SetDetailsViewCell.h */,
 				28AA6A1818DEBD1F00323A6F /* SetDetailsViewCell.m */,
@@ -166,6 +192,44 @@
 				28AE900618DE46640064AA59 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E787B23518DEC3AB00CC38CB /* Learning */ = {
+			isa = PBXGroup;
+			children = (
+				E787B23618DEC3AB00CC38CB /* MHDLearningManager.h */,
+				E787B23718DEC3AB00CC38CB /* MHDLearningManager.m */,
+				E787B23818DEC3AB00CC38CB /* MHDMood.h */,
+				E787B23918DEC3AB00CC38CB /* MHDMood.m */,
+			);
+			path = Learning;
+			sourceTree = "<group>";
+		};
+		E787B23A18DEC3AB00CC38CB /* DataLoader */ = {
+			isa = PBXGroup;
+			children = (
+				E787B23B18DEC3AB00CC38CB /* DataTypes */,
+				E787B24018DEC3AB00CC38CB /* MHDDataLoader.h */,
+				E787B24118DEC3AB00CC38CB /* MHDDataLoader.m */,
+				E787B24218DEC3AB00CC38CB /* MHDDataMapper.h */,
+				E787B24318DEC3AB00CC38CB /* MHDDataMapper.m */,
+				E787B24418DEC3AB00CC38CB /* MHDHtmlFromArticle.h */,
+				E787B24518DEC3AB00CC38CB /* MHDHtmlFromArticle.m */,
+				E787B24618DEC3AB00CC38CB /* MHDPublicInterface.h */,
+				E787B24718DEC3AB00CC38CB /* MHDPublicInterface.m */,
+			);
+			path = DataLoader;
+			sourceTree = "<group>";
+		};
+		E787B23B18DEC3AB00CC38CB /* DataTypes */ = {
+			isa = PBXGroup;
+			children = (
+				E787B23C18DEC3AB00CC38CB /* MHDArticle.h */,
+				E787B23D18DEC3AB00CC38CB /* MHDArticle.m */,
+				E787B23E18DEC3AB00CC38CB /* MHDArticleList.h */,
+				E787B23F18DEC3AB00CC38CB /* MHDArticleList.m */,
+			);
+			path = DataTypes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,11 +332,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E787B24C18DEC3AB00CC38CB /* MHDDataLoader.m in Sources */,
+				E787B24B18DEC3AB00CC38CB /* MHDArticleList.m in Sources */,
 				28AE8FF518DE46640064AA59 /* MHDViewController.m in Sources */,
 				28AE8FEF18DE46640064AA59 /* MHDAppDelegate.m in Sources */,
 				28AE8FEB18DE46640064AA59 /* main.m in Sources */,
+				E787B24E18DEC3AB00CC38CB /* MHDHtmlFromArticle.m in Sources */,
+				E787B24818DEC3AB00CC38CB /* MHDLearningManager.m in Sources */,
+				E787B24A18DEC3AB00CC38CB /* MHDArticle.m in Sources */,
 				28AA6A1A18DEBD1F00323A6F /* SetDetailsViewCell.m in Sources */,
+				E787B24918DEC3AB00CC38CB /* MHDMood.m in Sources */,
+				E787B24F18DEC3AB00CC38CB /* MHDPublicInterface.m in Sources */,
 				28AE901518DE48310064AA59 /* CaptureSession.m in Sources */,
+				E787B24D18DEC3AB00CC38CB /* MHDDataMapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
