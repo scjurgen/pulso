@@ -7,7 +7,7 @@
 //
 
 #import "MHDViewController.h"
-
+#import "MHDRenderWebView.h"
 
 #import <OpenGLES/EAGL.h>
 #import "MHDCardsWorld.h"
@@ -69,6 +69,13 @@ char *testImages[] = {
 - (void)viewDidLoad
 {
 
+    CGRect rc = CGRectMake(0,0,320.0,568.0);
+
+    MHDRenderWebView *webRender = [[MHDRenderWebView alloc] initWithFrame:rc];
+    [webRender render:nil withTemplate:@"MainWebTemplate" andBlock:^(UIImage *image) {
+        // saving image
+
+    }];
     webNewsEngine = [[WebNewsEngine alloc] init];
     [webNewsEngine defineTemplate:@"NewsScreen"];
 
@@ -115,8 +122,6 @@ char *testImages[] = {
     [webNewsEngine createHtmlUsingBlock:^(MHDArticle *article, NSString *template) {
         [_contentWebView loadHTMLString:[self getHtmlFromArticle:article forTemplate:template] baseURL:nil];
     }];
-    
-    
 }
 
 - (NSString *)getHtmlFromArticle:(MHDArticle *)article forTemplate:(NSString *)template {
@@ -150,8 +155,6 @@ char *testImages[] = {
     if (invalue > maxValue) return maxValue;
     return invalue;
 }
-
-
 
 // Add new method to file (anywhere)
 - (void)handlePanFrom:(UIPanGestureRecognizer *)recognizer {
