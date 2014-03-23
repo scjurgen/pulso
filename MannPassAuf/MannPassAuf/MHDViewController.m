@@ -8,12 +8,16 @@
 
 #import "MHDViewController.h"
 #import <ImageIO/ImageIO.h>
+#import "DataLoader/MHDPublicInterface.h"
+#import "DataLoader/DataTypes/MHDArticleList.h"
+#import "DataLoader/DataTypes/MHDArticle.h"
 
 NSString *kCellID = @"SetDetailsViewCellID";
 
 
 @interface MHDViewController ()
 @property(nonatomic, retain)UIView *sideMenu;
+@property(nonatomic, retain)NSMutableArray *articlesArray;
 @end
 
 @implementation MHDViewController
@@ -39,7 +43,7 @@ NSString *kCellID = @"SetDetailsViewCellID";
                                                           CGRectGetMidY(layerRect))];
     [v.layer insertSublayer:_captureSession.previewLayer atIndex:0];
 
-    UIButton *menuButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 520, 100, 40)];
+    UIButton *menuButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 30, 100, 40)];
     [menuButton addTarget:self action:@selector(menuButtonPushed:) forControlEvents:UIControlEventTouchUpInside];
     [menuButton setTitle:@"💉" forState:UIControlStateNormal];
     menuButton.enabled = YES;
@@ -119,7 +123,76 @@ NSString *kCellID = @"SetDetailsViewCellID";
 }
 
 - (void)moodButtonAction:(id)sender {
-    [[[UIAlertView alloc] initWithTitle:@"Your mood" message:@"Mood not found. Please get into the mood!" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil] show];
+    UIButton *btn = sender;
+    
+    MHDMoods moods;
+    switch (btn.tag) {
+        case 1:
+            moods = 0;
+            break;
+        case 2:
+            moods = 1;
+            break;
+        case 3:
+            moods = 2;
+            break;
+        case 4:
+            moods = 3;
+            break;
+        case 5:
+            moods = 4;
+            break;
+        case 6:
+            moods = 5;
+            break;
+        case 7:
+            moods = 6;
+            break;
+        case 8:
+            moods = 7;
+            break;
+        case 9:
+            moods = 8;
+            break;
+        case 10:
+            moods = 9;
+            break;
+        default:
+            break;
+    }
+    
+    
+    
+    [MHDPublicInterface getArticlesForMood:moods
+                                 onSuccess:^(id resultSuccess) {
+                                     [self processResultForList:(MHDArticleList *)resultSuccess];
+                                 }
+                                 onFailure:^(id resultFailure) {
+                                     
+                                 }];
+    
+    
+    
+
+}
+
+- (void)processResultForList:(MHDArticleList *)list {
+    _articlesArray = [[NSMutableArray alloc] init];
+    for (NSString *articleId in list.articlesList) {
+        
+        [MHDPublicInterface getArticleForId:articleId
+                                  onSuccess:^(id resultSuccess) {
+                                      MHDArticle *article = (MHDArticle *)resultSuccess;
+                                      
+                                      [_articlesArray addObject:article];
+                                      [self.newsCollectionView reloadData];
+                                  }
+                                  onFailure:^(id resultFailure) {
+                                      
+                                  }];
+        
+    }
+    
 }
 
 - (void)menuButtonPushed:(id)sender {
@@ -192,18 +265,51 @@ NSString *kCellID = @"SetDetailsViewCellID";
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section;
 {
-     return 20;
+     return [_articlesArray count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath;
 {
     SetDetailsViewCell *cell = [_newsCollectionView dequeueReusableCellWithReuseIdentifier:kCellID forIndexPath:indexPath];
 
-    cell.titleLabel.text = @"Titel ist hier";
-    cell.newsImageView.image = [UIImage imageNamed:@"test1.png"];
-    cell.articleView.text = @"hallo world";
+    MHDArticle *article = [_articlesArray objectAtIndex:indexPath.row];
+    
+    
+    
+    
+    NSArray *mediaArr;
+    NSDictionary *medias;
+    NSArray *pictureArr;
+    NSDictionary *pictures;
+    
+    if (article[@"medias"]) mediaArr = article[@"medias"];
+    if (mediaArr[0]) medias = mediaArr[0];
+    if (medias[@"references"]) pictureArr = medias[@"references"];
+    if (pictureArr[0]) pictures = pictureArr[0];
+    if (pictures[@"url"]) {
+        dispatch_async(dispatch_get_global_queue(0,0), ^{
+            NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:pictures[@"url"]]];
+            if ( data == nil )
+                return;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // WARNING: is the cell still using the same data by this point??
+                cell.newsImageView.image = [UIImage imageWithData: data];
+                
+                cell.titleLabel.text = article[@"title"];
+                cell.articleView.text = article[@"content"];
+                
+            });
+        });
+    }
+    
     return cell;
+
+    
 }
 
+- (void)getImage:(NSString *)url {
+    
+    
+}
 
 @end
