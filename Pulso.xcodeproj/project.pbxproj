@@ -193,7 +193,6 @@
 		28C8593D18DDCFA500C5374B /* Pulso */ = {
 			isa = PBXGroup;
 			children = (
-				28AE8FCE18DE32880064AA59 /* geometry.h */,
 				E787B1F918DDFF9400CC38CB /* DataLoader */,
 				28C859A118DDD50A00C5374B /* TestImages */,
 				28C8599D18DDD4E100C5374B /* NewsCards */,
@@ -256,6 +255,7 @@
 		28C8597118DDD3DE00C5374B /* CardsEngine */ = {
 			isa = PBXGroup;
 			children = (
+				28AE8FCE18DE32880064AA59 /* geometry.h */,
 				28C859A318DDD53D00C5374B /* WorldPov.h */,
 				28C859A418DDD53D00C5374B /* WorldPov.m */,
 				28C8597818DDD48700C5374B /* CardLifeCycle.h */,
