@@ -31,14 +31,12 @@
 }
 
 
-- (void)render:(NSString *)url
-  withTemplate:(NSString *)templateName
+- (void)render:(NSString *)articleId
       andBlock:(MHDImageBlock)block
 {
     successBlock = block;
     self.delegate = self;
     webNewsEngine = [[WebNewsEngine alloc] init];
-    [webNewsEngine defineTemplate:templateName];
     [webNewsEngine createHtmlUsingBlock:^(MHDArticle *article, NSString *htmlstring)
      {
          NSString *str = [NSString stringWithFormat:@"http://www.nerdware.net/hackathon/article.php?id=%@",article[@"identifier"]];
@@ -46,10 +44,6 @@
          NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
          [self loadRequest:request];
 
-//         [self loadHTMLString:[MHDHtmlFromArticle getHtmlFromArticle:article
-//                                                         forTemplate:templateName]
-//                      baseURL:nil];
-//         [self webViewDidFinishLoad:self];
      }];
 }
 

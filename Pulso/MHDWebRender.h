@@ -13,8 +13,7 @@ typedef void(^MHDImageBlock)(UIImage *image);
 
 - (id)initWithFrame:(CGRect)frame;
 
-- (void)render:(NSString *)url
-  withTemplate:(NSString *)templateName
+- (void)render:(NSString *)articleId
       andBlock:(MHDImageBlock)block;
 
 @end

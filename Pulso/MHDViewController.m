@@ -33,7 +33,6 @@ char *testImages[] = {
     float _rotationX,_rotationY;
     float _panX,_panY;
 
-
     float _lastRotationX, _lastRotationY;
     float _lastPanX, _lastPanY;
     float _currentZoom;
@@ -50,6 +49,7 @@ char *testImages[] = {
     UIImage *renderedImage;
     MHDRenderArticle *offlineRender;
     MHDWebRender *webRender;
+    int articleLoadedCount;
 }
 
 @property (strong, nonatomic) EAGLContext *context;
@@ -70,24 +70,34 @@ char *testImages[] = {
     self.cardsWorld.worldPov.zoom = _currentZoom;
 }
 
+- (void)loadMoreCards
+{
+    int currentArticle = articleLoadedCount;
+    articleLoadedCount++;
+    if (articleLoadedCount>=7*12)
+        return;
+    CGRect rc = CGRectMake(0,0,320.0,568.0);
+    webRender = [[MHDWebRender alloc] initWithFrame:rc];
+    [webRender render:nil andBlock:^(UIImage *image) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            int column = currentArticle%12;
+            int row = currentArticle/7;
+            if (row < 7)
+            {
+                [self.cardsWorld.textureAtlas updateTexture:column row:row image:image];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self loadMoreCards];
+                });
+            }
+        });
+    }];
+}
+
 
 - (void)viewDidLoad
 {
-    CGRect rc = CGRectMake(0,0,320.0,568.0);
-
-//    offlineRender = [[MHDRenderArticle alloc] init];
-//    [offlineRender renderArticle:rc
-//                   withArticleId:@"da17228caa78f321e802f3641d69bed8"
-//                        andBlock:^(UIImage *image) {
-//                            renderedImage =  image;
-//                        }];
-    webRender = [[MHDWebRender alloc] initWithFrame:rc];
-    [webRender render:nil withTemplate:nil andBlock:^(UIImage *image) {
-        renderedImage =  image;
-    }];
-
-
-
+    articleLoadedCount = 0;
+    [self loadMoreCards];
 
     webNewsEngine = [[WebNewsEngine alloc] init];
     [webNewsEngine defineTemplate:@"NewsScreen"];
@@ -204,14 +214,12 @@ char *testImages[] = {
                     _panY = _lastPanY+(touchLocation.y-locStart.y)/100.0;
                     _panX  = [self clampFloat:_panX  minValue:-CLAMPPANX maxValue:CLAMPPANX];
                     _panY  = [self clampFloat:_panY  minValue:-CLAMPPANY maxValue:CLAMPPANY];
-                    NSLog(@"pan: %f,%f",_panX, _panY);
                     break;
                 case 3:
                     _rotationX = _lastRotationX+(locStart.x-touchLocation.x)/100.0;
                     _rotationY = _lastRotationY+(touchLocation.y-locStart.y)/100.0;
                     _rotationX  = [self clampFloat:_rotationX  minValue:-CLAMPROTX maxValue:CLAMPROTX];
                     _rotationY  = [self clampFloat:_rotationY  minValue:-CLAMPROTY maxValue:CLAMPROTY];
-                    NSLog(@"Rotation: %f,%f",_rotationX, _rotationY);
                     break;
             }
 
@@ -336,19 +344,6 @@ char *testImages[] = {
 {
     [self.cardsWorld update:self.view.bounds.size];
     [self applyDamping];
-
-    static int i=0;
-    i++;
-    if (i==15)
-    {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //            NSString *name = [NSString stringWithFormat:@"TestImages/%s",testImages[rand()%(sizeof(testImages)/sizeof(char*))]];
-            //            UIImage *image =  [UIImage imageNamed:name];
-            UIImage *image =  renderedImage;
-            [self.cardsWorld.textureAtlas updateTexture:rand()%12 row:rand()%7  image:image ];
-        });
-        i = 0;
-    }
 }
 
 - (void)tearDownGL
