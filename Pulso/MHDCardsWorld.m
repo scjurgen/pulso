@@ -128,7 +128,7 @@
 
     float aspect = fabsf(size.width / size.height);
 
-    self.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.2f, 1.0E5f);
+    self.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.3f, 1.0E5f);
 
     self.effect.transform.projectionMatrix = self.projectionMatrix;
 
