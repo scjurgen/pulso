@@ -72,72 +72,73 @@ NSString *kCellID = @"SetDetailsViewCellID";
 
 
 - (void)setupSideMenu {
-    CGFloat advanceY = 44.0;
-    CGFloat buttonHeight=44.0;
+    CGFloat advanceY = 48.0;
+    CGFloat buttonHeight=40.0;
+    CGFloat left=4.0;
     _sideMenu = [[UIView alloc] initWithFrame:CGRectMake(-50, 0, 50, self.view.frame.size.height)];
     _sideMenu.backgroundColor = [UIColor darkGrayColor];
     _sideMenu.alpha = 0.9;
     [self.view addSubview:_sideMenu];
     CGFloat y=0.0;
     
-    UIButton *angry = [[UIButton alloc] initWithFrame:CGRectMake(0, y+=advanceY, 50, buttonHeight)];
+    UIButton *angry = [[UIButton alloc] initWithFrame:CGRectMake(left, y+=advanceY, buttonHeight, buttonHeight)];
     [angry addTarget:self action:@selector(moodButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     angry.tag = 1;
-    [angry setTitle:@"😠" forState:UIControlStateNormal];
+    [angry setImage:[UIImage imageNamed:@"angry.png" ] forState:UIControlStateNormal];
     [_sideMenu addSubview:angry];
     
-    UIButton *confused = [[UIButton alloc] initWithFrame:CGRectMake(0, y+=advanceY, 50, buttonHeight)];
+    UIButton *confused = [[UIButton alloc] initWithFrame:CGRectMake(left, y+=advanceY, buttonHeight, buttonHeight)];
     [confused addTarget:self action:@selector(moodButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     confused.tag = 2;
-    [confused setTitle:@"😵" forState:UIControlStateNormal];
+    [confused setImage:[UIImage imageNamed:@"confused.png" ] forState:UIControlStateNormal];
     [_sideMenu addSubview:confused];
     
-    UIButton *cool = [[UIButton alloc] initWithFrame:CGRectMake(0, y+=advanceY, 50, buttonHeight)];
+    UIButton *cool = [[UIButton alloc] initWithFrame:CGRectMake(left, y+=advanceY, buttonHeight, buttonHeight)];
     [cool addTarget:self action:@selector(moodButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     cool.tag = 3;
-    [cool setTitle:@"😎" forState:UIControlStateNormal];
+    [cool setImage:[UIImage imageNamed:@"cool.png" ] forState:UIControlStateNormal];
     [_sideMenu addSubview:cool];
     
-    UIButton *happy = [[UIButton alloc] initWithFrame:CGRectMake(0, y+=advanceY, 50, buttonHeight)];
+    UIButton *happy = [[UIButton alloc] initWithFrame:CGRectMake(left, y+=advanceY, buttonHeight, buttonHeight)];
     [happy addTarget:self action:@selector(moodButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     happy.tag = 4;
-    [happy setTitle:@"😃" forState:UIControlStateNormal];
+    [happy setImage:[UIImage imageNamed:@"happy.png" ] forState:UIControlStateNormal];
     [_sideMenu addSubview:happy];
     
-    UIButton *neutral = [[UIButton alloc] initWithFrame:CGRectMake(0, y+=advanceY, 50, buttonHeight)];
+    UIButton *neutral = [[UIButton alloc] initWithFrame:CGRectMake(left, y+=advanceY, buttonHeight, buttonHeight)];
     [neutral addTarget:self action:@selector(moodButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     neutral.tag = 5;
-    [neutral setTitle:@"😑" forState:UIControlStateNormal];
+    [neutral setImage:[UIImage imageNamed:@"neutral.png" ] forState:UIControlStateNormal];
     [_sideMenu addSubview:neutral];
     
-    UIButton *sad = [[UIButton alloc] initWithFrame:CGRectMake(0, y+=advanceY, 50, buttonHeight)];
+    UIButton *sad = [[UIButton alloc] initWithFrame:CGRectMake(left, y+=advanceY, buttonHeight, buttonHeight)];
     [sad addTarget:self action:@selector(moodButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     sad.tag = 6;
-    [sad setTitle:@"😢" forState:UIControlStateNormal];
-    [_sideMenu addSubview:sad];
+    [sad setImage:[UIImage imageNamed:@"sad.png" ] forState:UIControlStateNormal];
+   [_sideMenu addSubview:sad];
     
-    UIButton *shocked = [[UIButton alloc] initWithFrame:CGRectMake(0, y+=advanceY, 50, buttonHeight)];
+    UIButton *shocked = [[UIButton alloc] initWithFrame:CGRectMake(left, y+=advanceY, buttonHeight, buttonHeight)];
     [shocked addTarget:self action:@selector(moodButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     shocked.tag = 7;
-    [shocked setTitle:@"😱" forState:UIControlStateNormal];
+    [shocked setImage:[UIImage imageNamed:@"shocked.png" ] forState:UIControlStateNormal];
     [_sideMenu addSubview:shocked];
     
-    UIButton *smile = [[UIButton alloc] initWithFrame:CGRectMake(0, y+=advanceY, 50, buttonHeight)];
+    UIButton *smile = [[UIButton alloc] initWithFrame:CGRectMake(left, y+=advanceY, buttonHeight, buttonHeight)];
     [smile addTarget:self action:@selector(moodButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     smile.tag = 8;
-    [smile setTitle:@"😄" forState:UIControlStateNormal];
+    [smile setImage:[UIImage imageNamed:@"smiley.png" ] forState:UIControlStateNormal];
     [_sideMenu addSubview:smile];
     
-    UIButton *tongue = [[UIButton alloc] initWithFrame:CGRectMake(0, y+=advanceY, 50, buttonHeight)];
+    UIButton *tongue = [[UIButton alloc] initWithFrame:CGRectMake(left, y+=advanceY, buttonHeight, buttonHeight)];
     [tongue addTarget:self action:@selector(moodButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     tongue.tag = 9;
-    [tongue setTitle:@"😛" forState:UIControlStateNormal];
+    [tongue setImage:[UIImage imageNamed:@"tongue.png" ] forState:UIControlStateNormal];
     [_sideMenu addSubview:tongue];
     
-    UIButton *wondering = [[UIButton alloc] initWithFrame:CGRectMake(0, y+=advanceY, 50, buttonHeight)];
+    UIButton *wondering = [[UIButton alloc] initWithFrame:CGRectMake(left, y+=advanceY, buttonHeight, buttonHeight)];
     [wondering addTarget:self action:@selector(moodButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     wondering.tag = 10;
-    [wondering setTitle:@"😳" forState:UIControlStateNormal];
+    [wondering setImage:[UIImage imageNamed:@"wondering.png" ] forState:UIControlStateNormal];
     [_sideMenu addSubview:wondering];
 }
 
