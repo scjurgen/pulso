@@ -13,6 +13,7 @@
 #import "DataLoader/DataTypes/MHDArticle.h"
 #import "Learning/MHDLearningManager.h"
 #import "Learning/MHDMood.h"
+#import "UIImageView+AFNetworking.h"
 
 NSString *kCellID = @"SetDetailsViewCellID";
 
@@ -322,20 +323,23 @@ NSString *kCellID = @"SetDetailsViewCellID";
     if (mediaArr[0]) medias = mediaArr[0];
     if (medias[@"references"]) pictureArr = medias[@"references"];
     if (pictureArr[0]) pictures = pictureArr[0];
+    cell.newsImageView.image = nil;
     if (pictures[@"url"]) {
-        dispatch_async(dispatch_get_global_queue(0,0), ^{
-            NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:pictures[@"url"]]];
-            if ( data == nil )
-                return;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (cell)
-                {
-                    if (cell.tag == indexPath.row)
-                        cell.newsImageView.image = [UIImage imageWithData: data];
-                }
-
-            });
-        });
+        [cell.newsImageView setImageWithURL:[NSURL URLWithString:pictures[@"url"]]];
+//        dispatch_async(dispatch_get_global_queue(0,0), ^{
+//            NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:pictures[@"url"]]];
+//            if ( data == nil )
+//                return;
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//
+//                if (cell)
+//                {
+//                    if (cell.tag == indexPath.row)
+//                        cell.newsImageView.image = [UIImage imageWithData: data];
+//                }
+//
+//            });
+//        });
     }
 
     cell.titleLabel.text = [self trimLeadingWhitespace:article[@"title"]];
